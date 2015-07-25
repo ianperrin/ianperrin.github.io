@@ -1,5 +1,5 @@
         <ul class="fa-ul">
 {% for network in site.data.networks %}
-          <li><i class="fa-li fa fa-{{ network.icon_class }}"></i><a href="{{ network.url }}">{{ network.name }}</a></li>
+          <li><i class="fa-li fa fa-{{ network.icon_class }}"></i><a href="{{ network.url }}">{{ network.caption }}</a></li>
 {% endfor %}
         </ul>
