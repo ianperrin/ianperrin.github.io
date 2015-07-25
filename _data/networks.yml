@@ -1,10 +1,13 @@
 --- 
 linkedin: 
-  handle: ianperrin
-  url: "https://linkedin.com/in/"
+  name: "linkedin.com/in/ianperrin"
+  url: "https://linkedin.com/in/ianperrin/"
+  icon_class: linkedin
 twitter: 
-  handle: ian_perrin
-  url: "https://twitter.com/"
+  name: "Twitter.com/ian_perrin"
+  url: "https://twitter.com/ian_perrin/"
+  icon_class: twitter
 github: 
-  handle: ianperrin
-  url: "https://github.com/"
+  name: "github.com/ianperrin"
+  url: "https://github.com/ianperrin/"
+  icon_class: github
