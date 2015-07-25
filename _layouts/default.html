@@ -3,9 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <title>
+{% if page.title %}
+    {{ page.title }}
+{% else %}
+    {{ site.title }}
+{% endif %}
+    </title>
+    <meta name="author" content="{{ site.author }}" />
+{% if page.description %}
+    <meta name="description" content="{{ page.description}}" />
+{% endif %}
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/github-light.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -14,19 +25,19 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Ian Perrin</h1>
-        <p></p>
-
-
-        <p class="view"><a href="https://github.com/ianperrin">github.com/ianperrin</a></p>
-        <p class="view"><a href="https://twitter.com/ian_perrin/">twitter.com/ian_perrin</a></p>
-        <p class="view"><a href="https://linkedin.com/in/ianperrin/">linkedin.com/in/ianperrin</a></p>
+        <h1>{{ site.title }}</h1>
+        <p>{{ site.description }}</p>
       </header>
       <section>
         {{ content }}
       </section>
       <footer>
-        <p><small>Copyright &copy; Ian Perrin</small></p>
+        <p><small>Copyright &copy; {{ site.time | date: '%Y' }} {{ site.author }}</small></p>
+        <ul class="fa-ul">
+          <li><i class="fa-li fa fa-linkedin"></i><a href="https://linkedin.com/in/ianperrin/">linkedin.com/in/ianperrin</a></li>
+          <li><i class="fa-li fa fa-twitter"></i><a href="https://twitter.com/ian_perrin/">twitter.com/ian_perrin</a></li>
+          <li><i class="fa-li fa fa-github"></i><a href="https://github.com/ianperrin">github.com/ianperrin</a></li>
+        </ul>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
