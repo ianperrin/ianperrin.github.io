@@ -1,13 +1,16 @@
---- 
-linkedin: 
-  name: "linkedin.com/in/ianperrin"
-  url: "https://linkedin.com/in/ianperrin/"
-  icon_class: linkedin
-twitter: 
-  name: "twitter.com/ian_perrin"
-  url: "https://twitter.com/ian_perrin/"
-  icon_class: twitter
-github: 
-  name: "github.com/ianperrin"
-  url: "https://github.com/ianperrin/"
-  icon_class: github
+---
+-
+    name: linkedin
+    caption: "linkedin.com/in/ianperrin"
+    url: "https://linkedin.com/in/ianperrin/"
+    icon_class: linkedin
+-
+    name: twitter
+    caption: "twitter.com/ian_perrin"
+    url: "https://twitter.com/ian_perrin/"
+    icon_class: twitter
+-
+    name: github
+    caption: "github.com/ianperrin"
+    url: "https://github.com/ianperrin/"
+    icon_class: github
