@@ -1,5 +1,6 @@
+{% assign person = site.data.people[0] %}
         <ul class="fa-ul">
-{% for network in site.data.networks %}
-          <li><i class="fa-li fa fa-{{ network.icon_class }}"></i><a href="{{ network.url }}">{{ network.caption }}</a></li>
+{% for link in person.links %}
+          <li><a id="footer-{{ link[0] }}" class="icon" href="{{ link[1] }}" target="_blank"><i class="fa-li fa fa-{{ link[0] }}"></i>{{ link[1] }}</a></li>
 {% endfor %}
         </ul>
