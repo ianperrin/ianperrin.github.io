@@ -1,4 +1,27 @@
+# Site settings
 title: Ian Perrin
 description:
 author: Ian Perrin
 url: http://ianperrin.com
+
+# Handling Reading
+encoding:     "utf-8"
+
+# Outputting
+timezone:      "Europe/London"
+
+# Front Matter defaults
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"
+      author: "Ian Perrin"
