@@ -37,17 +37,11 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1>{{ site.title }}</h1>
-        <p>{{ site.description }}</p>
-      </header>
+{% include _header.html %}
       <section>
         {{ content }}
       </section>
-      <footer>
-        <p><small>Copyright &copy; {{ site.time | date: '%Y' }} {{ site.author }}</small></p>
-{% include network-list.html %}
-      </footer>
+{% include _footer.html %}
     </div>
 
 {% include _scripts.html %}
