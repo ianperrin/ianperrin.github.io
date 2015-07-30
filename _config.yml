@@ -1,5 +1,5 @@
 # Site settings
-title: Ian Perrin
+name: Ian Perrin
 description:
 author: Ian Perrin
 url: http://ianperrin.com
@@ -13,6 +13,7 @@ timezone:      "Europe/London"
 # Gems
 gems:
   - jekyll-sitemap
+  - jekyll-feed
 
 # Front Matter defaults
 defaults:
