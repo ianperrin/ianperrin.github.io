@@ -2,7 +2,7 @@
   links:
     linkedin: "https://linkedin.com/in/ianperrin/"
     twitter: "https://twitter.com/ian_perrin/"
-    strava: "https://strava.com/athletes/10014778/"
+    bicycle: "https://strava.com/athletes/10014778/" # rename to strava when/if included in FontAwesome (https://github.com/FortAwesome/Font-Awesome/issues/3313)
     github: "https://github.com/ianperrin/"
     bitbucket: "https://bitbucket.org/ianperrin/"
   name: "Ian Perrin"
