@@ -10,6 +10,10 @@ encoding:     "utf-8"
 # Outputting
 timezone:      "Europe/London"
 
+# Gems
+gems:
+  - jekyll-sitemap
+
 # Front Matter defaults
 defaults:
   -
