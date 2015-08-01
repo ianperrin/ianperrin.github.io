@@ -1,0 +1,9 @@
+<footer>
+  <p><small>Copyright &copy; {{ site.time | date: '%Y' }} {{ site.author }}</small></p>
+{% assign person = site.data.people[0] %}
+  <ul class="fa-ul">
+{% for link in person.links %}
+    <li><a id="footer-{{ link[0] }}" class="icon" href="{{ link[1] }}" target="_blank"><i class="fa-li fa fa-{{ link[0] }}"></i>{{ link[1] | remove_first: "https://" }}</a></li>
+{% endfor %}
+  </ul>
+</footer>
