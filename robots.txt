@@ -1,3 +1,7 @@
-User-agent: *
-Sitemap: http://ianperrin.com/sitemap.xml
-Disallow:
+---
+sitemap: false
+---
+User-Agent: *
+Disallow: 
+
+Sitemap: {{ site.url }}/sitemap.xml
