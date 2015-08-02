@@ -9,6 +9,7 @@ encoding:     "utf-8"
 
 # Outputting
 timezone:      "Europe/London"
+permalink:     "/:categories/:title"
 
 # Gems
 gems:
