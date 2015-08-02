@@ -39,6 +39,7 @@
     <div class="wrapper">
 {% include themes/minimal/_header.html %}
       <section>
+      	{% if page.title %}<h2>{{ page.title }}</h2>{% endif %}
         {{ content }}
       </section>
 {% include themes/minimal/_footer.html %}
