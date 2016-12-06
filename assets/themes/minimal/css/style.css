@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
 
 body {
   padding:50px;
@@ -21,6 +22,9 @@ h1, h2, h3 {
 }
 
 h1 {
+  font-family: 'Architects Daughter', Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  letter-spacing: -1px;
   font-size:28px;
 }
 
