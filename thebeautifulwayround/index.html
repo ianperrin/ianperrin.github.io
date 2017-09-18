@@ -37,6 +37,11 @@
           center = ctaLayer.getDefaultViewport().getCenter();
           map.panTo(center);
         });
+        
+        google.maps.event.addListener(ctaLayer, 'click', function(kmlEvent) {
+          var text = kmlEvent.featureData.description;
+          alert(text);
+        });
       }
       
     </script>
