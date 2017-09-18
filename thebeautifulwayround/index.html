@@ -32,7 +32,13 @@
           url: 'https://github.com/ianperrin/ianperrin.github.io/blob/master/thebeautifulwayround/route.kml?raw=true',
           map: map
         });
+        
+        google.maps.event.addListenerOnce(ctaLayer, 'defaultviewport_changed', function() {
+          center = ctaLayer.getDefaultViewport().getCenter();
+          map.panTo(center);
+        });
       }
+      
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKy2mX8SnitgMznopvS9A1t4G0RTU2oY0&callback=initMap">
