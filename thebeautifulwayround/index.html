@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    <title>KML Layers</title>
+    <title>The Beautiful Way Round</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -21,18 +22,23 @@
   <body>
     <div id="map"></div>
     <script>
-
       function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 11,
-          center: {lat: 41.876, lng: -87.624}
+          zoom: 8,
+          center: {lat: 50.8, lng: -3.9}
         });
-
         var ctaLayer = new google.maps.KmlLayer({
-          url: 'http://googlemaps.github.io/js-v2-samples/ggeoxml/cta.kml',
-          map: map
+          url: 'https://github.com/ianperrin/ianperrin.github.io/blob/master/thebeautifulwayround/route2.kml?raw=true',
+          clickable: false
+        });
+        ctaLayer.setMap(map);
+
+        google.maps.event.addListenerOnce(ctaLayer, 'defaultviewport_changed', function() {
+          center = ctaLayer.getDefaultViewport().getCenter();
+          map.panTo(center);
         });
       }
+      
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKy2mX8SnitgMznopvS9A1t4G0RTU2oY0&callback=initMap">
