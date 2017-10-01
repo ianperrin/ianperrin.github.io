@@ -14,60 +14,55 @@
 
     <!-- page CSS -->
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
       /* Makes the page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
         padding: 0;
       }
+      .fill{
+        height: 100%;
+      }
+      /* Always set the map height explicitly to define the size of the div element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      #sidePanel {
+        
+      }
+      
     </style>
   </head>
   <body>
 
     <!--header section-->
     <header>
-      <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-        <span class="h1" class="navbar-brand mb-0">The Beautiful Way Round</span>
+      <nav class="navbar fixed-top navbar-light bg-light">
+        <span class="navbar-brand">The Beautiful Way Round</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidePanel" aria-controls="sidePanel" aria-expanded="false" aria-label="Toggle sidebar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </nav>
     </header>
 
-    <!--maps section-->
-    <section class="map" id="map">
-      <div class="container">
-        <div id="map"></div>
+    <!-- content section-->
+    <div class="container-fluid fill">
+    <div class="row fill">
+      <div class="col" id="map"></div>
+      <div class="collapse col-4 bg-light" id="sidePanel">
+        <div>
+          <h4 class="text-white">Map options</h4>
+          <span class="text-muted">Toggleable via the navbar brand.</span>
+        </div>
+        <nav class="nav flex-column" id="layerLinks">
+          <a class="nav-link active" href="#">Active</a>
+          <a class="nav-link" href="#trip1">Trip 1</a>
+          <a class="nav-link" href="#trip2">Trip 2</a>
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </nav>
       </div>
-    </section>
-
-    <!-- Page JavaScript -->
-    <script>
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 8,
-          center: {lat: 50.8, lng: -3.9}
-        });
-        var ctaLayer = new google.maps.KmlLayer({
-          url: 'https://github.com/ianperrin/ianperrin.github.io/blob/master/thebeautifulwayround/route2.kml?raw=true',
-          clickable: false
-        });
-        ctaLayer.setMap(map);
-
-        google.maps.event.addListenerOnce(ctaLayer, 'defaultviewport_changed', function() {
-          center = ctaLayer.getDefaultViewport().getCenter();
-          map.panTo(center);
-        });
-        
-        google.maps.event.addListener(ctaLayer, 'click', function(kmlEvent) {
-          var text = kmlEvent.featureData.description;
-          alert(text);
-        });
-      }
-      
-    </script>
+    </div>
+    </div>
 
     <!-- Google Maps core JavaScript -->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKy2mX8SnitgMznopvS9A1t4G0RTU2oY0&callback=initMap"></script>
@@ -77,5 +72,71 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
+    <!-- Page JavaScript -->
+    <script>
+      var map;
+      var kml = {
+        a: {
+            name: "Trip 1",
+            url: "https://github.com/ianperrin/ianperrin.github.io/blob/master/thebeautifulwayround/route2.kml?raw=true"
+        }
+      };
+      
+      function initMap() {
+        var options = {
+          zoom: 8,
+          center: {lat: 50.8, lng: -3.9}
+        };
+        map = new google.maps.Map(document.getElementById('map'), options);
+        
+        for (var prop in kml) {
+          
+          var layerLink = $("<a />", { 
+            text: kml[prop].name, 
+            href: "#" + kml[prop].name, 
+            className: "nav-link",
+            data: {id: prop},
+            onclick: "toggleLayer('" + prop + "');"
+          });
+          $("#layerLinks").append(layerLink);
+          
+          toggleLayer(prop);
+  
+/*          google.maps.event.addListenerOnce(ctaLayer, 'defaultviewport_changed', function() {
+            center = ctaLayer.getDefaultViewport().getCenter();
+            map.panTo(center);
+          });
+          
+          google.maps.event.addListener(ctaLayer, 'click', function(kmlEvent) {
+            var text = kmlEvent.featureData.description;
+            alert(text);
+          });
+*/
+        }
+        
+      }
+      
+      function toggleLayer(id) {
+        //alert(id);
+        if (kml[id].layer) {
+          kml[id].layer.setMap(null);
+          delete kml[id].layer;
+        } else {
+          var ctaLayer = new google.maps.KmlLayer({
+            url: kml[id].url,
+            clickable: false
+          });
+          kml[id].layer = ctaLayer;
+          kml[id].layer.setMap(map);
+        }
+      }
+      
+      $(document).ready(function(){
+        $(".nav-link").click(function(){
+          alert($(this).attr('href'));
+        })
+      })
+      
+    </script>
   </body>
 </html>
