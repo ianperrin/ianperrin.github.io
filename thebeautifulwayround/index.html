@@ -84,7 +84,6 @@
             name: "Trip 2",
             url: "https://github.com/ianperrin/ianperrin.github.io/blob/master/thebeautifulwayround/route2.kml?raw=true"
         }
-
       };
       
       function initMap() {
@@ -94,15 +93,15 @@
         };
         map = new google.maps.Map(document.getElementById('map'), options);
         
+        var layerLink;
         for (var prop in kml) {
           
-          var layerLink = $("<a />", { 
+          layerLink = $("<a />", { 
             text: kml[prop].name, 
             href: "#" + kml[prop].name, 
-            className: "nav-link",
-            data: {id: prop},
+            class: "nav-link",
             onclick: "toggleLayer('" + prop + "');"
-          });
+          }).data('id', prop);
           $("#layerLinks").append(layerLink);
           
           toggleLayer(prop);
