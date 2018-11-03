@@ -63,10 +63,8 @@
     </div>
 
     <!-- LeafletJS JavaScript -->
-    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-      integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-      crossorigin=""></script>
-    <script src="https://raw.githubusercontent.com/shramov/leaflet-plugins/master/layer/vector/KML.js"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+    <script src="scripts/KML.js"></script>
 
     <!-- Bootstrap core JavaScript  -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -77,14 +75,8 @@
     <script>
       var map;
       var kml = {
-        a: {
-            name: "Part 1",
-            url: "https://github.com/ianperrin/ianperrin.github.io/blob/master/thebeautifulwayround/route1.kml?raw=true"
-        },
-        b: {
-            name: "Part 2",
-            url: "https://github.com/ianperrin/ianperrin.github.io/blob/master/thebeautifulwayround/route2.kml?raw=true"
-        }
+        a: { name: "Part 1", url: "route1.kml" },
+        b: { name: "Part 2", url: "route2.kml" }
       };
       
       function initMap() {
