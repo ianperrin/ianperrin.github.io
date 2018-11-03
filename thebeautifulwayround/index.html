@@ -103,16 +103,16 @@
         
         var Stamen_Terrain = L.tileLayer(
           'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
-        	attribution: '<a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        	subdomains: 'abcd',
-	        minZoom: 0,
-        	maxZoom: 18,
-        	ext: 'png'
+          attribution: '<a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          subdomains: 'abcd',
+          minZoom: 0,
+          maxZoom: 18,
+          ext: 'png'
         }).addTo( map );
         
         var Esri_WorldStreetMap = L.tileLayer(
           'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-         	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+           attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
         });
         
         map.attributionControl.setPrefix(''); 
@@ -132,7 +132,7 @@
         }
 
         // Place Layer Groups
-	var markerIcon = {icon: L.icon.glyph({ prefix: "mki", glyph: "hotel" }) };
+        var markerIcon = {icon: L.icon.glyph({ prefix: 'mki', glyph: 'hotel', glyphSize: '14px' }) };
         var beds = L.layerGroup([
           L.marker([51.3402823,-2.9782258], markerIcon).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
           L.marker([50.6881295,-4.6925689], markerIcon).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
