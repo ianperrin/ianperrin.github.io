@@ -9,6 +9,11 @@
 
     <title>The Beautiful Way Round</title>
 
+    <!-- LeafletJS css -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""/>
+
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -21,7 +26,7 @@
         padding: 0;
       }
       .fill{
-        height: 100%;
+        height: 100vh;
       }
       /* Always set the map height explicitly to define the size of the div element that contains the map. */
       #map {
@@ -37,11 +42,13 @@
 
     <!--header section-->
     <header>
-      <nav class="navbar fixed-top navbar-light bg-light">
-        <span class="navbar-brand">The Beautiful Way Round</span>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidePanel" aria-controls="sidePanel" aria-expanded="false" aria-label="Toggle sidebar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <nav class="navbar navbar-default navbar-static-top navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbar-brand">The Beautiful Way Round</span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidePanel" aria-controls="sidePanel" aria-expanded="false" aria-label="Toggle sidebar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
       </nav>
     </header>
 
@@ -49,19 +56,17 @@
     <div class="container-fluid fill">
     <div class="row fill">
       <div class="col" id="map"></div>
-      <div class="collapse col-4 bg-light" id="sidePanel">
-        <div>
-          <h4 class="text-white">Map options</h4>
-          <span class="text-muted">Toggleable via the navbar brand.</span>
-        </div>
-        <nav class="nav flex-column" id="layerLinks">
-        </nav>
+      <div class="collapse col-3 bg-light" id="sidePanel">
+        <nav class="nav flex-column" id="layerLinks"></nav>
       </div>
     </div>
     </div>
 
-    <!-- Google Maps core JavaScript -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKy2mX8SnitgMznopvS9A1t4G0RTU2oY0&callback=initMap"></script>
+    <!-- LeafletJS JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+      integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+      crossorigin=""></script>
+    <script src="https://raw.githubusercontent.com/shramov/leaflet-plugins/master/layer/vector/KML.js"></script>
 
     <!-- Bootstrap core JavaScript  -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -83,11 +88,18 @@
       };
       
       function initMap() {
+      
         var options = {
-          zoom: 8,
-          center: {lat: 50.8, lng: -3.9}
+          zoom: 7,
+          center: new L.LatLng(51.5,-1.9)
         };
-        map = new google.maps.Map(document.getElementById('map'), options);
+        map = new L.Map("map", options);
+
+        L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: ['a','b','c']
+        }).addTo( map );
+        map.attributionControl.setPrefix(''); 
         
         var layerLink;
         for (var prop in kml) {
@@ -98,42 +110,33 @@
             class: "nav-link",
             onclick: "toggleLayer('" + prop + "');"
           }).data('id', prop);
-          $("#layerLinks").append(layerLink);
-          
+          $("#layerLinks").append(layerLink);                                      
+
           toggleLayer(prop);
   
-/*          google.maps.event.addListenerOnce(ctaLayer, 'defaultviewport_changed', function() {
-            center = ctaLayer.getDefaultViewport().getCenter();
-            map.panTo(center);
-          });
-          
-          google.maps.event.addListener(ctaLayer, 'click', function(kmlEvent) {
-            var text = kmlEvent.featureData.description;
-            alert(text);
-          });
-*/
         }
-        
       }
       
       function toggleLayer(id) {
         //alert(id);
         if (kml[id].layer) {
-          kml[id].layer.setMap(null);
+          map.removeLayer(kml[id].layer);
           delete kml[id].layer;
         } else {
-          var ctaLayer = new google.maps.KmlLayer({
-            url: kml[id].url,
-            clickable: false
-          });
-          kml[id].layer = ctaLayer;
-          kml[id].layer.setMap(map);
+          var kmlLayer = new L.KML(
+            kml[id].url,
+            {async: true}
+          );
+          kml[id].layer = kmlLayer;
+          map.addLayer(kml[id].layer);
         }
       }
       
       $(document).ready(function(){
+        initMap();
+      
         $(".nav-link").click(function(){
-          alert($(this).attr('href'));
+          alert($(this).attr('onclick'));
         })
       })
       
