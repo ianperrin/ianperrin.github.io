@@ -128,15 +128,18 @@
         }
 
         // Place Layer Groups
+	var markerOptions = { icon: L.icon.glyph({
+		prefix: 'mdi',
+		glyph: 'package' };
         var beds = L.layerGroup([
-          L.marker([51.3402823,-2.9782258]).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
-          L.marker([50.6881295,-4.6925689]).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
-          L.marker([50.5163703,-4.8363978]).bindPopup(getPopupText('The Swan Inn', 'Wadebridge')),
-          L.marker([50.3646599,-4.3842924]).bindPopup(getPopupText('The Smugglers Inn', 'Seaton')),
-          L.marker([50.7156792,-3.0511965]).bindPopup(getPopupText('Axmouth', 'Seaton')),
-          L.marker([50.7169685,-1.8769405,]).bindPopup(getPopupText('Hermitage Hotel', 'Bournemouth')),
-          L.marker([50.8512461,-0.9804905]).bindPopup(getPopupText('Bear Hotel', 'Havant')),
-          L.marker([51.0763062,1.172535]).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
+          L.marker([51.3402823,-2.9782258], markerOptions).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
+          L.marker([50.6881295,-4.6925689], markerOptions).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
+          L.marker([50.5163703,-4.8363978], markerOptions).bindPopup(getPopupText('The Swan Inn', 'Wadebridge')),
+          L.marker([50.3646599,-4.3842924], markerOptions).bindPopup(getPopupText('The Smugglers Inn', 'Seaton')),
+          L.marker([50.7156792,-3.0511965], markerOptions).bindPopup(getPopupText('Axmouth', 'Seaton')),
+          L.marker([50.7169685,-1.8769405], markerOptions).bindPopup(getPopupText('Hermitage Hotel', 'Bournemouth')),
+          L.marker([50.8512461,-0.9804905], markerOptions).bindPopup(getPopupText('Bear Hotel', 'Havant')),
+          L.marker([51.0763062,1.172535], markerOptions).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
         ]).addTo( map );
         var eats = L.layerGroup([
           L.marker([51.3368192,-2.979889]).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
