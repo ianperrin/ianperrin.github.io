@@ -56,7 +56,7 @@
     <div class="container-fluid fill">
     <div class="row fill">
       <div class="col" id="map"></div>
-      <div class="collapse col-3 bg-light" id="sidePanel">
+      <div class="collapse col-4 bg-light" id="sidePanel">
         <nav class="nav flex-column" id="layerLinks"></nav>
       </div>
     </div>
@@ -93,9 +93,24 @@
         // Base layers
         var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
         var osm = L.tileLayer(
-            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            {attribution: attribution}
-        ).addTo( map );
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: attribution
+        });
+        
+        var Stamen_Terrain = L.tileLayer(
+          'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+        	attribution: '<a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        	subdomains: 'abcd',
+	        minZoom: 0,
+        	maxZoom: 18,
+        	ext: 'png'
+        }).addTo( map );
+        
+        var Esri_WorldStreetMap = L.tileLayer(
+          'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+         	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+        });
+        
         map.attributionControl.setPrefix(''); 
         
         // Route layers
