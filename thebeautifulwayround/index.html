@@ -75,27 +75,30 @@
     <script>
       var map;
       var kml = {
-        a: { name: "Part 1", url: "route1.kml" },
-        b: { name: "Part 2", url: "route2.kml" }
+        a: { name: "Part 1", url: "kml/route1.kml" },
+        b: { name: "Part 2", url: "kml/route2.kml" }
       };
       
       function initMap() {
-      
+
+        // Map
         var options = {
           zoom: 7,
           center: new L.LatLng(51.5,-1.9)
         };
         map = new L.Map("map", options);
 
-        L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            subdomains: ['a','b','c']
-        }).addTo( map );
+        // Base layers
+        var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
+        var osm = L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {attribution: attribution}
+        ).addTo( map );
         map.attributionControl.setPrefix(''); 
         
+        // Route layers
         var layerLink;
         for (var prop in kml) {
-          
           layerLink = $("<a />", { 
             text: kml[prop].name, 
             href: "#" + kml[prop].name, 
@@ -105,8 +108,23 @@
           $("#layerLinks").append(layerLink);                                      
 
           toggleLayer(prop);
-  
         }
+
+        // Place Layer Groups
+        var beds = L.layerGroup([
+          L.marker([51.3402823,-2.9782258]).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
+          L.marker([50.6881295,-4.6925689]).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
+          L.marker([50.5163703,-4.8363978]).bindPopup(getPopupText('The Swan Inn', 'Wadebridge')),
+          L.marker([50.3646599,-4.3842924]).bindPopup(getPopupText('The Smugglers Inn', 'Seaton')),
+          L.marker([50.7156792,-3.0511965]).bindPopup(getPopupText('Axmouth', 'Seaton')),
+          L.marker([50.7169685,-1.8769405,]).bindPopup(getPopupText('Hermitage Hotel', 'Bournemouth')),
+          L.marker([50.8512461,-0.9804905]).bindPopup(getPopupText('Bear Hotel', 'Havant')),
+          L.marker([51.0763062,1.172535]).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
+        ]).addTo( map );
+        var eats = L.layerGroup([
+          L.marker([51.3368192,-2.979889]).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
+          L.marker([50.6900077,-4.6915733]).bindPopup(getPopupText('The Old Manor House', 'Boscastle'))
+        ]);
       }
       
       function toggleLayer(id) {
@@ -123,13 +141,15 @@
           map.addLayer(kml[id].layer);
         }
       }
+
+      function getPopupText(title, location) {
+        var popupText =  "<strong>" + title + "</strong><br />"+
+                    "<em>" + location + "</em><br />"
+        return popupText;
+        }
       
       $(document).ready(function(){
         initMap();
-      
-        $(".nav-link").click(function(){
-          alert($(this).attr('onclick'));
-        })
       })
       
     </script>
