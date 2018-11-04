@@ -157,6 +157,7 @@
                     return { color: feature.properties.stroke };
                 },
                 onEachFeature: function (feature, layer) {
+                    console.log(getDistance(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates)));
                     latLngs = latLngs.concat(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates));
                 }
             }).bindPopup(function (layer) {
