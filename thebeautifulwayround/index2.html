@@ -49,14 +49,18 @@
             ext: 'png'
         });
         var map = L.map('map')
-            .addLayer(stamenTerrainTiles);
-            map.on('overlayadd', onOverlayAdd);
-        
+            .addLayer(stamenTerrainTiles)
+            .on('overlayadd', onOverlayAdd)
+            .on('overlayremove'; onOverlayRemove);
+
+        function onOverlayRemove(e){
+            if(e.name === "Animation" && animatedMarker)
+                animatedMarker.stop();
+        }
         function onOverlayAdd(e){
-            if(e.name === "Animation")
+            if(e.name === "Animation" && animatedMarker)
                 animatedMarker.restart(latLngs);
         }
-
         var files = [
             "data/part1.min.geojson",
             "data/part2.min.geojson",
@@ -76,23 +80,25 @@
                 map.fitBounds(e.target.getBounds());
 
                 // Animation
+                var bikeIcon = {icon: L.icon.glyph({ prefix: 'mki', glyph: 'hotel', glyphSize: '20px' }) };
                 animatedMarker = L.animatedMarker(latLngs, {
                     distance: 2000,  // meters
                     interval: 100, // milliseconds
-                    autoStart: false
+                    autoStart: false,
+                    icon: bikeIcon
                 });
                 
                 // Place Layer Groups
-                var markerIcon = {icon: L.icon.glyph({ prefix: 'mki', glyph: 'hotel', glyphSize: '16px' }) };
+                var bedIcon = {icon: L.icon.glyph({ prefix: 'mki', glyph: 'hotel', glyphSize: '20px' }) };
                 var beds = L.layerGroup([
-                    L.marker([51.3402823,-2.9782258], markerIcon).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
-                    L.marker([50.6881295,-4.6925689], markerIcon).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
-                    L.marker([50.5163703,-4.8363978], markerIcon).bindPopup(getPopupText('The Swan Inn', 'Wadebridge')),
-                    L.marker([50.3646599,-4.3842924], markerIcon).bindPopup(getPopupText('The Smugglers Inn', 'Seaton')),
-                    L.marker([50.7156792,-3.0511965], markerIcon).bindPopup(getPopupText('Axmouth', 'Seaton')),
-                    L.marker([50.7169685,-1.8769405], markerIcon).bindPopup(getPopupText('Hermitage Hotel', 'Bournemouth')),
-                    L.marker([50.8512461,-0.9804905], markerIcon).bindPopup(getPopupText('Bear Hotel', 'Havant')),
-                    L.marker([51.0763062,1.172535], markerIcon).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
+                    L.marker([51.3402823,-2.9782258], bedIcon).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
+                    L.marker([50.6881295,-4.6925689], bedIcon).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
+                    L.marker([50.5163703,-4.8363978], bedIcon).bindPopup(getPopupText('The Swan Inn', 'Wadebridge')),
+                    L.marker([50.3646599,-4.3842924], bedIcon).bindPopup(getPopupText('The Smugglers Inn', 'Seaton')),
+                    L.marker([50.7156792,-3.0511965], bedIcon).bindPopup(getPopupText('Axmouth', 'Seaton')),
+                    L.marker([50.7169685,-1.8769405], bedIcon).bindPopup(getPopupText('Hermitage Hotel', 'Bournemouth')),
+                    L.marker([50.8512461,-0.9804905], bedIcon).bindPopup(getPopupText('Bear Hotel', 'Havant')),
+                    L.marker([51.0763062,1.172535], bedIcon).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
                 ]).addTo( map );
                 var eats = L.layerGroup([
                     L.marker([51.3368192,-2.979889]).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
