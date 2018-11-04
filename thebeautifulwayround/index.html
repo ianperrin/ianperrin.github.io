@@ -82,7 +82,7 @@
                 map.fitBounds(e.target.getBounds());
 
                 // Animation
-                var bikeIcon = L.icon.glyph({ prefix: 'mki', glyph: 'bike', glyphSize: '20px' });
+                var bikeIcon = L.icon.glyph({ prefix: 'mki', glyph: 'bicycle', glyphSize: '20px' });
                 animatedMarker = L.animatedMarker(latLngs, {
                     distance: 2000,  // meters
                     interval: 100, // milliseconds
@@ -102,9 +102,10 @@
                     L.marker([50.8512461,-0.9804905], {icon: bedIcon}).bindPopup(getPopupText('Bear Hotel', 'Havant')),
                     L.marker([51.0763062,1.172535], {icon: bedIcon}).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
                 ]).addTo( map );
+                var eatsIcon = L.icon.glyph({ prefix: 'mki', glyph: 'picnic_site', glyphSize: '20px' }) ;
                 var eats = L.layerGroup([
-                    L.marker([51.3368192,-2.979889]).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
-                    L.marker([50.6900077,-4.6915733]).bindPopup(getPopupText('The Old Manor House', 'Boscastle'))
+                    L.marker([51.3368192,-2.979889], {icon: eatsIcon}).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
+                    L.marker([50.6900077,-4.6915733], {icon: eatsIcon}).bindPopup(getPopupText('The Old Manor House', 'Boscastle'))
                 ]);
 
                 // Layer controls
@@ -114,7 +115,9 @@
                 };
                 var overlay = {
 //                    "Routes": routeLayers,
-                    "Animation": animatedMarker
+                    "Animation": animatedMarker,
+                    "Accommodation": beds,
+                    "Food and drink": eats
                 };
                 layerControl = L.control.layers(baseLayer, overlay, {collapsed: false}).addTo(map);
 
