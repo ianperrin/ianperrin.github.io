@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>The Beautiful Way Round</title>
 
@@ -13,167 +12,165 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
       integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
       crossorigin=""/>
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <!-- LeafletJS JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+    <script src="scripts/Leaflet.AnimatedMarker.js"></script>
+    <script src="scripts/Leaflet.Icon.Glyph.js"></script>
+    <!-- Bootstrap core JavaScript  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- Mapkey Icons -->
     <link rel="stylesheet" href="https://cdn.rawgit.com/mapshakers/mapkeyicons/master/dist/MapkeyIcons.css" type="text/css">
 
-    <!-- page CSS -->
-    <style>
-      /* Makes the page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
+    <style type="text/css">
+    html, body, #map {
         padding: 0;
-      }
-      .fill{
+        margin: 0; 
         height: 100vh;
-      }
-      /* Always set the map height explicitly to define the size of the div element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      #sidePanel {
-        
-      }
-      
+    }
     </style>
-  </head>
-  <body>
+</head>
 
-    <!--header section-->
-    <header>
-      <nav class="navbar navbar-default navbar-static-top navbar-light bg-light">
-        <div class="container-fluid">
-          <span class="navbar-brand">The Beautiful Way Round - 1244 miles and counting!</span>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidePanel" aria-controls="sidePanel" aria-expanded="false" aria-label="Toggle sidebar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </nav>
-    </header>
+<body>
+    <div id="map"></div>
 
-    <!-- content section-->
-    <div class="container-fluid fill">
-    <div class="row fill">
-      <div class="col" id="map"></div>
-      <div class="collapse col-4 bg-light" id="sidePanel">
-        <nav class="nav flex-column" id="layerLinks"></nav>
-      </div>
-    </div>
-    </div>
-
-    <!-- LeafletJS JavaScript -->
-    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-    <script src="scripts/KML.js"></script>
-    <script src="scripts/Leaflet.Icon.Glyph.js"></script>
-
-    <!-- Bootstrap core JavaScript  -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-    <!-- Page JavaScript -->
-    <script>
-      var map;
-      var kml = {
-        a: { name: "Part 1", url: "kml/route1.kml" },
-        b: { name: "Part 2", url: "kml/route2.kml" },
-        c: { name: "Part 3", url: "kml/route3.kml" },
-        d: { name: "Part 4", url: "kml/route4.kml" }
-      };
-      
-      function initMap() {
-
-        // Map
-        var options = {
-          zoom: 8,
-          center: new L.LatLng(51.5,-1.9)
-        };
-        map = new L.Map("map", options);
-
+    <script type="text/javascript">
         // Base layers
         var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
-        var osm = L.tileLayer(
+        var osmTiles = L.tileLayer(
             'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: attribution
         });
-        
-        var Stamen_Terrain = L.tileLayer(
-          'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
-          attribution: '<a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-          subdomains: 'abcd',
-          minZoom: 0,
-          maxZoom: 18,
-          ext: 'png'
-        }).addTo( map );
-        
-        var Esri_WorldStreetMap = L.tileLayer(
-          'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-           attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+        var stamenTerrainTiles = L.tileLayer(
+            'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
+            attribution: '<a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: 'abcd',
+            minZoom: 0,
+            maxZoom: 18,
+            ext: 'png'
         });
+        var map = L.map('map')
+            .addLayer(stamenTerrainTiles)
+            .on('overlayadd', onOverlayAdd)
+            .on('overlayremove', onOverlayRemove);
+
+        function onOverlayRemove(e){
+            if(e.name === "Animation" && animatedMarker)
+                animatedMarker.stop();
+        }
+        function onOverlayAdd(e){
+            if(e.name === "Animation" && animatedMarker)
+                animatedMarker.restart(latLngs);
+        }
+        var files = [
+            "data/part1.min.geojson",
+            "data/part2.min.geojson",
+            "data/part3.min.geojson",
+            "data/part4.min.geojson"
+        ]
         
-        map.attributionControl.setPrefix(''); 
+        var routeLayers = new L.featureGroup([])
+            .on('layeradd', onRouteLayerAdd);
+
+        var animatedMarker;
+        function onRouteLayerAdd(e) { 
+            if(e.target.getLayers().length === files.length)
+            {
+                // Add Routes to map
+                e.target.addTo(map);
+                map.fitBounds(e.target.getBounds());
+
+                // Animation
+                var bikeIcon = L.icon.glyph({ prefix: 'mki', glyph: 'bike', glyphSize: '20px' });
+                animatedMarker = L.animatedMarker(latLngs, {
+                    distance: 2000,  // meters
+                    interval: 100, // milliseconds
+                    autoStart: false,
+                    icon: bikeIcon
+                });
+                
+                // Place Layer Groups
+                var bedIcon = L.icon.glyph({ prefix: 'mki', glyph: 'hotel', glyphSize: '20px' }) ;
+                var beds = L.layerGroup([
+                    L.marker([51.3402823,-2.9782258], {icon: bedIcon}).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
+                    L.marker([50.6881295,-4.6925689], {icon: bedIcon}).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
+                    L.marker([50.5163703,-4.8363978], {icon: bedIcon}).bindPopup(getPopupText('The Swan Inn', 'Wadebridge')),
+                    L.marker([50.3646599,-4.3842924], {icon: bedIcon}).bindPopup(getPopupText('The Smugglers Inn', 'Seaton')),
+                    L.marker([50.7156792,-3.0511965], {icon: bedIcon}).bindPopup(getPopupText('Axmouth', 'Seaton')),
+                    L.marker([50.7169685,-1.8769405], {icon: bedIcon}).bindPopup(getPopupText('Hermitage Hotel', 'Bournemouth')),
+                    L.marker([50.8512461,-0.9804905], {icon: bedIcon}).bindPopup(getPopupText('Bear Hotel', 'Havant')),
+                    L.marker([51.0763062,1.172535], {icon: bedIcon}).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
+                ]).addTo( map );
+                var eats = L.layerGroup([
+                    L.marker([51.3368192,-2.979889]).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
+                    L.marker([50.6900077,-4.6915733]).bindPopup(getPopupText('The Old Manor House', 'Boscastle'))
+                ]);
+
+                // Layer controls
+                var baseLayer = { 
+                    "Terrain": stamenTerrainTiles,
+                    "Streets": osmTiles
+                };
+                var overlay = {
+//                    "Routes": routeLayers,
+                    "Animation": animatedMarker
+                };
+                layerControl = L.control.layers(baseLayer, overlay, {collapsed: false}).addTo(map);
+
+                // Info Panel
+                var routeDistance = 0; 
+                $.each(e.target.toGeoJSON().features, function( i, v ) { 
+                    routeDistance += v.properties.distance ; 
+                });
+                var infoPanel = L.control({position: 'bottomleft'});
+                infoPanel.onAdd = function (map) {  
+                    var div = L.DomUtil.create('div', 'leaflet-control-layers leaflet-control-layers-expanded leaflet-control info-panel')
+                    div.innerHTML = '<strong>' + routeDistance + ' miles</strong>';
+                    return div;
+                };
+                infoPanel.addTo(map);
+            }
+        }
+
+        // get the distance in metres
+        function getDistance(_latlngs) {
+            var distance = 0;
+            for (var i = 1; i < _latlngs.length; i++) {
+                distance += _latlngs[i].distanceTo(_latlngs[i - 1]);
+            }
+            return Math.round(distance / 100) / 10;
+        }
+
+        function getPopupText(title, subTitle) {
+          var popupText =  "<strong>" + title + "</strong><br />"+
+              "<em>" + subTitle + "</em><br />";
+          return popupText;
+        }
+
+        var latLngs = [];
+        for (i = 0, len = files.length; i < len; i++) { 
+          var promise = $.getJSON(files[i]);
+          promise.then(function(data) {
+
+            var route = L.geoJson(data, {
+                style: function (feature) {
+                    return { color: feature.properties.stroke };
+                },
+                onEachFeature: function (feature, layer) {
+                    var featureLatLngs = L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates);
+                    layer.feature.properties.distance = getDistance(featureLatLngs);
+                    latLngs = latLngs.concat(featureLatLngs);
+                }
+            }).bindPopup(function (layer) {
+                return getPopupText(layer.feature.properties.name, 'Distance: ' + layer.feature.properties.distance + ' miles');
+            })
+            routeLayers.addLayer(route);
+          });
+
+        }
+
         
-        // Route layers
-        var layerLink;
-        for (var prop in kml) {
-          layerLink = $("<a />", { 
-            text: kml[prop].name, 
-            href: "#" + kml[prop].name, 
-            class: "nav-link",
-            onclick: "toggleLayer('" + prop + "');"
-          }).data('id', prop);
-          $("#layerLinks").append(layerLink);                                      
-
-          toggleLayer(prop);
-        }
-
-        // Place Layer Groups
-        var markerIcon = {icon: L.icon.glyph({ prefix: 'mki', glyph: 'hotel', glyphSize: '14px' }) };
-        var beds = L.layerGroup([
-          L.marker([51.3402823,-2.9782258], markerIcon).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
-          L.marker([50.6881295,-4.6925689], markerIcon).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
-          L.marker([50.5163703,-4.8363978], markerIcon).bindPopup(getPopupText('The Swan Inn', 'Wadebridge')),
-          L.marker([50.3646599,-4.3842924], markerIcon).bindPopup(getPopupText('The Smugglers Inn', 'Seaton')),
-          L.marker([50.7156792,-3.0511965], markerIcon).bindPopup(getPopupText('Axmouth', 'Seaton')),
-          L.marker([50.7169685,-1.8769405], markerIcon).bindPopup(getPopupText('Hermitage Hotel', 'Bournemouth')),
-          L.marker([50.8512461,-0.9804905], markerIcon).bindPopup(getPopupText('Bear Hotel', 'Havant')),
-          L.marker([51.0763062,1.172535], markerIcon).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
-        ]).addTo( map );
-        var eats = L.layerGroup([
-          L.marker([51.3368192,-2.979889]).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
-          L.marker([50.6900077,-4.6915733]).bindPopup(getPopupText('The Old Manor House', 'Boscastle'))
-        ]);
-      }
-      
-      function toggleLayer(id) {
-        //alert(id);
-        if (kml[id].layer) {
-          map.removeLayer(kml[id].layer);
-          delete kml[id].layer;
-        } else {
-          var kmlLayer = new L.KML(
-            kml[id].url,
-            {async: true}
-          );
-          kml[id].layer = kmlLayer;
-          map.addLayer(kml[id].layer);
-        }
-      }
-
-      function getPopupText(title, location) {
-        var popupText =  "<strong>" + title + "</strong><br />"+
-                    "<em>" + location + "</em><br />"
-        return popupText;
-        }
-      
-      $(document).ready(function(){
-        initMap();
-      })
-      
     </script>
-  </body>
+</body>
 </html>
