@@ -42,6 +42,10 @@
             'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: attribution
         });
+        var esriWorldStreetMapTiles = L.tileLayer(
+          'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+           attribution: '&copy; Esri'
+        });
         var stamenTerrainTiles = L.tileLayer(
             'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.{ext}', {
             attribution: '<a href="http://stamen.com">Stamen Design</a>, ' + attribution,
@@ -54,6 +58,7 @@
             .addLayer(stamenTerrainTiles)
             .on('overlayadd', onOverlayAdd)
             .on('overlayremove', onOverlayRemove);
+        map.attributionControl.setPrefix(''); 
 
         function onOverlayRemove(e){
             if(e.name === "Animation" && animatedMarker)
@@ -111,7 +116,8 @@
                 // Layer controls
                 var baseLayer = { 
                     "Terrain": stamenTerrainTiles,
-                    "Streets": osmTiles
+                    "Streets": osmTiles,
+                    "Esri": esriWorldStreetMapTiles 
                 };
                 var overlay = {
 //                    "Routes": routeLayers,
