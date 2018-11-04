@@ -103,13 +103,13 @@ L.AnimatedMarker = L.Marker.extend({
   restart: function(latlngs){
     this.initialize(latlngs);
     // Don't show CSS transition back to initial position
-    this._icon.style[L.DomUtil.TRANSITION] = ('all ' + 0 + 'ms linear')
-    this._shadow.style[L.DomUtil.TRANSITION] = ('all ' + 0 + 'ms linear')
+    if (this._icon) {this._icon.style[L.DomUtil.TRANSITION] = ('all ' + 0 + 'ms linear')}
+    if (this._shadow) {this._shadow.style[L.DomUtil.TRANSITION] = ('all ' + 0 + 'ms linear')}
     // Reset marker to initial position
     this.setLatLng(this._latlngs[0]);
     var that = this;
     setTimeout(function(){
-    that.start();
+      that.start();
     }, 200)
   },
 
