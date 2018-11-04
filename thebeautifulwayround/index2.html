@@ -128,7 +128,7 @@
 
         function getDistance(_latlngs, system) {
             // distance in meters
-            var this._distance = 0,
+            this._distance = 0,
                 length = _latlngs.length;
             for (var i = 1; i < length; i++) {
                 this._distance += _latlngs[i].distanceTo(_latlngs[i - 1]);
