@@ -15,7 +15,8 @@
     <!-- LeafletJS JavaScript -->
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
     <script src="scripts/Leaflet.AnimatedMarker.js"></script>
-    <script src="scripts/Leaflet.Icon.Glyph.js"></script>
+    <link rel="stylesheet" href="scripts/markers/leaflet.awesome-markers.css">
+    <script src="scripts/markers/leaflet.awesome-markers.js"></script>
     <!-- Bootstrap core JavaScript  -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -87,7 +88,7 @@
                 map.fitBounds(e.target.getBounds());
 
                 // Animation
-                var bikeIcon = L.icon.glyph({ prefix: 'mki', glyph: 'bicycle', glyphSize: '20px' });
+                var bikeIcon = L.AwesomeMarkers.icon({ prefix: 'mki', glyph: 'bicycle', markerColor: 'red' });
                 animatedMarker = L.animatedMarker(latLngs, {
                     distance: 2000,  // meters
                     interval: 100, // milliseconds
@@ -96,7 +97,7 @@
                 });
                 
                 // Place Layer Groups
-                var bedIcon = L.icon.glyph({ prefix: 'mki', glyph: 'hotel', glyphSize: '20px' }) ;
+                var bedIcon = L.AwesomeMarkers.icon({ prefix: 'mki', glyph: 'hotel', markerColor: 'blue' }) ;
                 var beds = L.layerGroup([
                     L.marker([51.3402823,-2.9782258], {icon: bedIcon}).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
                     L.marker([50.6881295,-4.6925689], {icon: bedIcon}).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
@@ -107,7 +108,7 @@
                     L.marker([50.8512461,-0.9804905], {icon: bedIcon}).bindPopup(getPopupText('Bear Hotel', 'Havant')),
                     L.marker([51.0763062,1.172535], {icon: bedIcon}).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
                 ]).addTo( map );
-                var eatsIcon = L.icon.glyph({ prefix: 'mki', glyph: 'picnic_site', glyphSize: '20px' }) ;
+                var eatsIcon = L.markerColor({ prefix: 'mki', glyph: 'picnic_site', markerColor: 'green' }) ;
                 var eats = L.layerGroup([
                     L.marker([51.3502417,-2.9759273], {icon: eatsIcon}).bindPopup(getPopupText('Bengal Raj', 'Clarence Park, Western-super-Mare')), 
                     L.marker([51.3368192,-2.979889], {icon: eatsIcon}).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
