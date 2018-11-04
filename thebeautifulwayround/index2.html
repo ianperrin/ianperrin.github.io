@@ -113,6 +113,12 @@
             }
         }
 
+        function getPopupText(title, location) {
+          var popupText =  "<strong>" + title + "</strong><br />"+
+              "<em>" + location + "</em><br />";
+          return popupText;
+        }
+
         var latLngs = [];
         for (i = 0, len = files.length; i < len; i++) { 
           var promise = $.getJSON(files[i]);
