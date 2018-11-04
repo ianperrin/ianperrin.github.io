@@ -51,7 +51,7 @@
         var map = L.map('map')
             .addLayer(stamenTerrainTiles)
             .on('overlayadd', onOverlayAdd)
-            .on('overlayremove'; onOverlayRemove);
+            .on('overlayremove', onOverlayRemove);
 
         function onOverlayRemove(e){
             if(e.name === "Animation" && animatedMarker)
