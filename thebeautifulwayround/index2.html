@@ -63,7 +63,7 @@
         }
         var files = [
             "data/part1.min.geojson",
-            "data/part2.min.geojson",
+//            "data/part2.min.geojson",
 //            "data/part3.min.geojson",
             "data/part4.min.geojson"
         ]
@@ -128,16 +128,16 @@
 
         function getDistance(_latlngs, system) {
             // distance in meters
-            var distance = 0,
+            var this._distance = 0,
                 length = _latlngs.length;
             for (var i = 1; i < length; i++) {
-                distance += _latlngs[i].distanceTo(_latlngs[i - 1]);
+                this._distance += _latlngs[i].distanceTo(_latlngs[i - 1]);
             }
             // optional
             if (system === 'imperial') {
-                return Math.round(distance / 1609.34);
+                return Math.round(this._distance / 1609.34);
             } else {
-                return Math.round(distance / 1000);
+                return Math.round(this._distance / 1000);
             }
         }
 
