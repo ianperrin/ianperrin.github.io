@@ -116,6 +116,28 @@
                 };
                 layerControl = L.control.layers(baseLayer, overlay, {collapsed: false}).addTo(map);
 
+                var infoPanel = L.control({position: 'bottomleft'});
+                infoPanel.onAdd = function (map) {  
+                    var div = L.DomUtil.create('div', 'leaflet-control-layers leaflet-control-layers-expanded leaflet-control info-panel')
+                    div.innerHTML = '<strong>' + getDistance(latLngs) + ' miles</strong>';
+                    return div;
+                };
+                infoPanel.addTo(map);
+            }
+        }
+
+        function getDistance(_latlngs, system) {
+            // distance in meters
+            var distance = 0,
+                length = _latlngs.length;
+            for (var i = 1; i < length; i++) {
+                distance += _latlngs[i].distanceTo(_latlngs[i - 1]);
+            }
+            // optional
+            if (system === 'imperial') {
+                return Math.round(distance / 1609.34);
+            } else {
+                return Math.round(distance / 1000);
             }
         }
 
