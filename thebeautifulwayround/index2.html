@@ -163,7 +163,7 @@
                     latLngs = latLngs.concat(featureLatLngs);
                 }
             }).bindPopup(function (layer) {
-                return getPopupText(layer.feature.properties.name, layer.feature.properties.distance);
+                return getPopupText(layer.feature.properties.name, 'Distance: ' + layer.feature.properties.distance + ' miles');
             })
             routeLayers.addLayer(route);
           });
