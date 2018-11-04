@@ -107,7 +107,7 @@
                     L.marker([50.6900077,-4.6915733]).bindPopup(getPopupText('The Old Manor House', 'Boscastle'))
                 ]);
 
-                // Controls
+                // Layer controls
                 var baseLayer = { 
                     "Terrain": stamenTerrainTiles,
                     "Streets": osmTiles
@@ -118,34 +118,33 @@
                 };
                 layerControl = L.control.layers(baseLayer, overlay, {collapsed: false}).addTo(map);
 
+                // Info Panel
+                var routeDistance = 0; 
+                $.each(e.target.toGeoJSON().features, function( i, v ) { 
+                    routeDistance += v.properties.distance ; 
+                });
                 var infoPanel = L.control({position: 'bottomleft'});
                 infoPanel.onAdd = function (map) {  
                     var div = L.DomUtil.create('div', 'leaflet-control-layers leaflet-control-layers-expanded leaflet-control info-panel')
-                    div.innerHTML = '<strong>' + getDistance(latLngs) + ' miles</strong>';
+                    div.innerHTML = '<strong>' + routeDistance + ' miles</strong>';
                     return div;
                 };
                 infoPanel.addTo(map);
             }
         }
 
-        function getDistance(_latlngs, system) {
-            // distance in meters
-            var totalDistance = 0,
-                length = _latlngs.length;
-            for (var i = 1; i < length; i++) {
-                totalDistance += _latlngs[i].distanceTo(_latlngs[i - 1]);
+        // get the distance in metres
+        function getDistance(_latlngs) {
+            var distance = 0;
+            for (var i = 1; i < _latlngs.length; i++) {
+                distance += _latlngs[i].distanceTo(_latlngs[i - 1]);
             }
-            // optional
-            if (system === 'imperial') {
-                return Math.round(totalDistance / 160.934) / 10;
-            } else {
-                return Math.round(totalDistance / 100) / 10;
-            }
+            return Math.round(distance / 100) / 10;
         }
 
-        function getPopupText(title, location) {
+        function getPopupText(title, subTitle) {
           var popupText =  "<strong>" + title + "</strong><br />"+
-              "<em>" + location + "</em><br />";
+              "<em>" + subTitle + "</em><br />";
           return popupText;
         }
 
@@ -159,11 +158,12 @@
                     return { color: feature.properties.stroke };
                 },
                 onEachFeature: function (feature, layer) {
-                    console.log(getDistance(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates)));
-                    latLngs = latLngs.concat(L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates));
+                    var featureLatLngs = L.GeoJSON.coordsToLatLngs(feature.geometry.coordinates);
+                    layer.feature.properties.distance = getDistance(featureLatLngs);
+                    latLngs = latLngs.concat(featureLatLngs);
                 }
             }).bindPopup(function (layer) {
-                return layer.feature.properties.name;
+                return getPopupText(layer.feature.properties.name, layer.feature.properties.distance);
             })
             routeLayers.addLayer(route);
           });
