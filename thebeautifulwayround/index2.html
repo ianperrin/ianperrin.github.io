@@ -225,10 +225,10 @@ L.animatedMarker = function (latlngs, options) {
 
         var latLngs = [];
         for (i = 0, len = files.length; i < len; i++) { 
-    //    var promise = $.getJSON(files[i]);
-    //    promise.then(function(data) {
+          var promise = $.getJSON(files[i]);
+          promise.then(function(data) {
 
-            var route = L.geoJson(data[i], {
+            var route = L.geoJson(data, {
                 style: function (feature) {
                     return { color: feature.properties.stroke };
                 },
@@ -239,7 +239,7 @@ L.animatedMarker = function (latlngs, options) {
                 return layer.feature.properties.name;
             })
             routeLayers.addLayer(route);
-    //    });
+          });
 
         }
 
