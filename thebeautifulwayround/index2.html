@@ -13,6 +13,7 @@
     <!-- LeafletJS JavaScript -->
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
     <script src="scripts/Leaflet.AnimatedMarker.js"></script>
+    <script src="scripts/Leaflet.Icon.Glyph.js"></script>
     <!-- Bootstrap core JavaScript  -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -80,6 +81,23 @@
                     interval: 100, // milliseconds
                     autoStart: false
                 });
+                
+                // Place Layer Groups
+                var markerIcon = {icon: L.icon.glyph({ prefix: 'mki', glyph: 'hotel', glyphSize: '16px' }) };
+                var beds = L.layerGroup([
+                    L.marker([51.3402823,-2.9782258], markerIcon).bindPopup(getPopupText('The Bear Inn', 'Western-super-Mare')), 
+                    L.marker([50.6881295,-4.6925689], markerIcon).bindPopup(getPopupText('The Wellington Hotel', 'Boscastle')), 
+                    L.marker([50.5163703,-4.8363978], markerIcon).bindPopup(getPopupText('The Swan Inn', 'Wadebridge')),
+                    L.marker([50.3646599,-4.3842924], markerIcon).bindPopup(getPopupText('The Smugglers Inn', 'Seaton')),
+                    L.marker([50.7156792,-3.0511965], markerIcon).bindPopup(getPopupText('Axmouth', 'Seaton')),
+                    L.marker([50.7169685,-1.8769405], markerIcon).bindPopup(getPopupText('Hermitage Hotel', 'Bournemouth')),
+                    L.marker([50.8512461,-0.9804905], markerIcon).bindPopup(getPopupText('Bear Hotel', 'Havant')),
+                    L.marker([51.0763062,1.172535], markerIcon).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
+                ]).addTo( map );
+                var eats = L.layerGroup([
+                    L.marker([51.3368192,-2.979889]).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
+                    L.marker([50.6900077,-4.6915733]).bindPopup(getPopupText('The Old Manor House', 'Boscastle'))
+                ]);
 
                 // Controls
                 var baseLayer = { 
