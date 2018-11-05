@@ -95,7 +95,7 @@
                 var bikeIcon = L.AwesomeMarkers.icon({ prefix: 'fa', icon: 'motorcycle', markerColor: 'red' });
                 animatedMarker = L.animatedMarker(latLngs, {
                     distance: 2000,  // meters
-                    interval: 100, // milliseconds
+                    interval: 50, // milliseconds
                     autoStart: false,
                     icon: bikeIcon,
                     onEnd: function() {
