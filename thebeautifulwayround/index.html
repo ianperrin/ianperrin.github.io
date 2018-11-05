@@ -108,7 +108,7 @@
                     L.marker([50.8512461,-0.9804905], {icon: bedIcon}).bindPopup(getPopupText('Bear Hotel', 'Havant')),
                     L.marker([51.0763062,1.172535], {icon: bedIcon}).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
                 ]).addTo( map );
-                var eatsIcon = L.markerColor({ prefix: 'mki', glyph: 'picnic_site', markerColor: 'green' }) ;
+                var eatsIcon = L.AwesomeMarkers.icon({ prefix: 'mki', glyph: 'picnic_site', markerColor: 'green' }) ;
                 var eats = L.layerGroup([
                     L.marker([51.3502417,-2.9759273], {icon: eatsIcon}).bindPopup(getPopupText('Bengal Raj', 'Clarence Park, Western-super-Mare')), 
                     L.marker([51.3368192,-2.979889], {icon: eatsIcon}).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
