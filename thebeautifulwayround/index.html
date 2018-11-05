@@ -66,9 +66,11 @@
         function onOverlayRemove(e){
             if(e.name === "Animation" && animatedMarker)
                 animatedMarker.stop();
+                map.fitBounds(routeLayers.getBounds());
         }
         function onOverlayAdd(e){
             if(e.name === "Animation" && animatedMarker)
+                map.setZoomAround(latLngs[0], 9, { padding: [100,100]});
                 animatedMarker.restart(latLngs);
         }
         var files = [
@@ -95,7 +97,14 @@
                     distance: 2000,  // meters
                     interval: 100, // milliseconds
                     autoStart: false,
-                    icon: bikeIcon
+                    icon: bikeIcon,
+                    onEnd: function() {
+                      map.fitBounds(e.target.getBounds());
+                    }
+                });
+                animatedMarker.on('move', function(e) {
+                    //console.log(e.latlng);
+                    map.panTo(e.latlng);
                 });
                 
                 // Place Layer Groups
