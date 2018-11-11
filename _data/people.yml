@@ -7,7 +7,7 @@
       prefix: fab
     - name: twitter
       url: "https://twitter.com/ian_perrin/"
-      icon: twitter
+      icon: twitter-square
       prefix: fab
     - name: salesforce
       url: "https://trailhead.com/me/ianperrin"
@@ -19,7 +19,7 @@
       prefix: fab
     - name: github
       url: "https://github.com/ianperrin/"
-      icon: github
+      icon: github-square
       prefix: fab
     - name: bitbucket
       url: "https://bitbucket.org/ianperrin/"
