@@ -23,11 +23,11 @@ defaults:
       path: ""
       type: "pages"
     values:
-      layout: "default"
+      layout: "minimal"
   -
     scope:
       path: ""
       type: "posts"
     values:
-      layout: "default"
+      layout: "minimal"
       author: "Ian Perrin"
