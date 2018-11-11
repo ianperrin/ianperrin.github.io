@@ -1,3 +1,6 @@
+---
+permalink: /thebeautifulwayround/
+---
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,11 +67,15 @@
         map.attributionControl.setPrefix(''); 
 
         function onOverlayRemove(e){
+            console.log e.name
+            console.log animatedMarker
             if(e.name === "Animation" && animatedMarker)
                 animatedMarker.stop();
                 map.fitBounds(routeLayers.getBounds());
         }
         function onOverlayAdd(e){
+            console.log e.name
+            console.log animatedMarker
             if(e.name === "Animation" && animatedMarker)
                 map.setZoomAround(latLngs[0], 9, { padding: [100,100]});
                 animatedMarker.restart(latLngs);
