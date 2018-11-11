@@ -7,7 +7,7 @@
       prefix: fab
     - name: twitter
       url: "https://twitter.com/ian_perrin/"
-      icon: linkedin
+      icon: twitter
       prefix: fab
     - name: salesforce
       url: "https://trailhead.com/me/ianperrin"
