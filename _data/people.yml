@@ -25,3 +25,7 @@
       url: "https://bitbucket.org/ianperrin/"
       icon: bitbucket
       prefix: fab
+    - name: sourcerer
+      url: "https://sourcerer.io/ianperrin"
+      icon: magic
+      prefix: fas
