@@ -85,7 +85,8 @@ permalink: /thebeautifulwayround/
             "data/part1.min.geojson",
             "data/part2.min.geojson",
             "data/part3.min.geojson",
-            "data/part4.min.geojson"
+            "data/part4.min.geojson",
+            "data/part5.min.geojson"
         ]
         
         var routeLayers = new L.featureGroup([])
@@ -126,21 +127,31 @@ permalink: /thebeautifulwayround/
                     L.marker([50.7169685,-1.8769405], {icon: bedIcon}).bindPopup(getPopupText('Hermitage Hotel', 'Bournemouth')),
                     L.marker([50.8512461,-0.9804905], {icon: bedIcon}).bindPopup(getPopupText('Bear Hotel', 'Havant')),
                     L.marker([51.0763062,1.172535], {icon: bedIcon}).bindPopup(getPopupText('Best Western Clifton', 'Folkestone')),
+                    L.marker([51.8166671434945,0.666539669036865], {icon: bedIcon}).bindPopup(getPopupText('The Rivenhall Hotel', 'Rivenhall')),
+                    L.marker([51.9672939664045,1.35350167751312], {icon: bedIcon}).bindPopup(getPopupText('The Orwell Hotel', 'Felixstowe')),
                 ]).addTo( map );
                 var eatsIcon = L.AwesomeMarkers.icon({ prefix: 'fa', icon: 'coffee', markerColor: 'green' }) ;
                 var eats = L.layerGroup([
                     L.marker([51.3502417,-2.9759273], {icon: eatsIcon}).bindPopup(getPopupText('Bengal Raj', 'Clarence Park, Western-super-Mare')), 
-                    L.marker([51.3368192,-2.979889], {icon: eatsIcon}).bindPopup(getPopupText('Olivers Cafe', 'Clarence Park, Western-super-Mare')), 
+                    L.marker([51.3368192,-2.979889], {icon: eatsIcon}).bindPopup(getPopupText('Olivers Café', 'Clarence Park, Western-super-Mare')), 
                     L.marker([51.001623,-4.4966267], {icon: eatsIcon}).bindPopup(getPopupText('Cheristow Lavender Tea Rooms', 'Hartland')),
                     L.marker([50.6900077,-4.6915733], {icon: eatsIcon}).bindPopup(getPopupText('The Old Manor House', 'Boscastle')),
                     L.marker([50.5157436,-4.8383305], {icon: eatsIcon}).bindPopup(getPopupText('Molesworth Arms Hotel', 'Wadebridge')),
                     L.marker([50.3438821,-5.1564041], {icon: eatsIcon}).bindPopup(getPopupText('Robs Coffee House', 'Perranporth')),
                     L.marker([49.9679413,-5.2057074], {icon: eatsIcon}).bindPopup(getPopupText('Fat Jacks', 'Lizard')),
                     L.marker([50.7506899,-1.5310772], {icon: eatsIcon}).bindPopup(getPopupText('The Haven Bar and Restaurant', 'Lymington')),
-                    L.marker([50.6905556,-1.0927805], {icon: eatsIcon}).bindPopup(getPopupText('The Tollgate Cafe', 'Bembridge')),
+                    L.marker([50.6905556,-1.0927805], {icon: eatsIcon}).bindPopup(getPopupText('The Tollgate Café', 'Bembridge')),
                     L.marker([50.8505463,-0.9754047], {icon: eatsIcon}).bindPopup(getPopupText('The Wheelwright\'s Arms', 'Havant')),
-                    L.marker([50.7757264,-0.9095788], {icon: eatsIcon}).bindPopup(getPopupText('Beach Cafe', 'West Wittering')),
-                    L.marker([51.3322348,1.4212575], {icon: eatsIcon}).bindPopup(getPopupText('The Caffe Roma', 'Ramsgate'))
+                    L.marker([50.7757264,-0.9095788], {icon: eatsIcon}).bindPopup(getPopupText('Beach Café', 'West Wittering')),
+                    L.marker([51.3322348,1.4212575], {icon: eatsIcon}).bindPopup(getPopupText('The Caffe Roma', 'Ramsgate')),
+                    L.marker([51.5126232,0.5956217], {icon: eatsIcon}).bindPopup(getPopupText('Sue\'s Café', 'Canvey Island')),
+                    L.marker([51.6255368,0.8165855], {icon: eatsIcon}).bindPopup(getPopupText('The Cabin Dairy Café and Tea Rooms', 'Burnham-on-Crouch')),
+                    L.marker([51.9565171,1.2755091], {icon: eatsIcon}).bindPopup(getPopupText('The Kingscliff Hotel', 'Clacton-on-Sea')),
+                    L.marker([51.9565171,1.2755091], {icon: eatsIcon}).bindPopup(getPopupText('The Shipwreck', 'Shotley Gate')),
+                    L.marker([51.9615356,1.3486819], {icon: eatsIcon}).bindPopup(getPopupText('Blue Naan', 'Felixstowe')),
+                    L.marker([51.9565171,1.2755091], {icon: eatsIcon}).bindPopup(getPopupText('Riverside Tearoom', 'Orford')),
+                    L.marker([52.6067762,1.7359739], {icon: eatsIcon}).bindPopup(getPopupText('Café Ocean', 'Great Yarmouth')),
+                    L.marker([52.9325393,1.2897568], {icon: eatsIcon}).bindPopup(getPopupText('Blue Sky Cafe', 'Cromer'))
                 ]);
 
                 // Layer controls
