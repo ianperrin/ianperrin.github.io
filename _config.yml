@@ -1,8 +1,8 @@
 # Site settings
 name: Ian Perrin
-description:
+description: Dad, technologist, home automation enthusiast, biker and SWFC fan.
 author: Ian Perrin
-url: http://ianperrin.com
+url: https://ianperrin.com
 
 # Handling Reading
 encoding:     "utf-8"
