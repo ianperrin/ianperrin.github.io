@@ -61,6 +61,10 @@ permalink: /thebeautifulwayround/
             maxZoom: 18,
             ext: 'png'
         });
+        var openCycleMap = L.tileLayer(
+            'https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=471408c368d944db8db668da98f5d126', {
+            attribtuion: '&copy; Thunderforest'
+        });
         var map = L.map('map')
             .addLayer(stamenTerrainTiles)
             .on('overlayadd', onOverlayAdd)
@@ -85,8 +89,9 @@ permalink: /thebeautifulwayround/
             "data/part1.min.geojson",
             "data/part2.min.geojson",
             "data/part3.min.geojson",
-            "data/part4.min.geojson",
-            "data/part5.min.geojson"
+            "data/part4.min.geojson"
+            //,
+            //"data/part5.min.geojson"
         ]
         
         var routeLayers = new L.featureGroup([])
@@ -158,7 +163,8 @@ permalink: /thebeautifulwayround/
                 var baseLayer = { 
                     "Terrain": stamenTerrainTiles,
                     "Streets": osmTiles,
-                    "Esri": esriWorldStreetMapTiles 
+                    "Esri": esriWorldStreetMapTiles,
+                    "OpenCycleMap", openCycleMap
                 };
                 var overlay = {
 //                    "Routes": routeLayers,
