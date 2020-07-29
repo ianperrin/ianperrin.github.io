@@ -15,6 +15,7 @@ permalink:     "/:categories/:title"
 gems:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Front Matter defaults
 defaults:
