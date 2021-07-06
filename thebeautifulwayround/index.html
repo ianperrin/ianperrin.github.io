@@ -189,7 +189,7 @@ permalink: /thebeautifulwayround/
                 var infoPanel = L.control({position: 'bottomleft'});
                 infoPanel.onAdd = function (map) {  
                     var div = L.DomUtil.create('div', 'leaflet-control-layers leaflet-control-layers-expanded leaflet-control info-panel')
-                    div.innerHTML = '<strong>' + routeDistance + ' miles</strong>';
+                    div.innerHTML = '<strong>' + Math.round(routeDistance) + ' miles</strong>';
                     return div;
                 };
                 infoPanel.addTo(map);
