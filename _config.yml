@@ -2,9 +2,14 @@
 title: Ian Perrin
 tagline: Dad, technologist, biker and SWFC fan.
 description: Dad, technologist, home automation enthusiast, biker and SWFC fan.
-author: ianperrin
+author: ian_perrin
 lang: en_GB
 repository: ianperrin/ianperrin.github.io
+
+# SEO
+twitter:
+  username: ian_perrin
+  card: summary
 
 # Outputting
 baseurl: ""
