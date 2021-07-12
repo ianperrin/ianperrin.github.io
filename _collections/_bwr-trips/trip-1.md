@@ -29,6 +29,11 @@ places:
         name: 'Pack O'' Cards'
         location: 'Combe Martin'
     -
+        latlng: [51.1720129,-4.2059746]
+        type: food
+        name: Fudgies Bakehouse
+        location: Woolacoombe
+    -
         latlng: [51.001623,-4.4966267]
         type: food
         name: 'Cheristow Lavender Tea Rooms'
