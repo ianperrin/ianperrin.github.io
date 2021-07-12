@@ -10,6 +10,13 @@ repository: ianperrin/ianperrin.github.io
 baseurl: ""
 timezone: Europe/London
 
+# Generator exclusions
+exclude:
+  - vendor
+  - /LICENSE
+  - /params.json
+  - /README.md
+
 # Site config
 highlighter: rouge
 
