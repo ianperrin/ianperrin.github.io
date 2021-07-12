@@ -8,9 +8,30 @@ layout: bwr
 hide-global-nav: true
 ---
 <!-- Trip features -->
-<div class="row row-bwr-trip-features align-items-stretch flex-nowrap py-5 bg-cover row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
-  {% for trip in site.bwr-trips %}
-  {% assign tripId = 'bwr-' | append: trip.slug %}
+<div class="row row-bwr-trip-features align-items-stretch flex-nowrap bg-cover row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 p-4">
+  {% for trip in site.bwr-trips -%}
+  {% assign tripId = 'bwr-' | append: trip.slug -%}
+  <div class="col py-5">
+    <div class="card">
+      <img src="/assets/images/{{ tripId }}.jpg" class="card-img-top img-fluid" alt="{{ trip.title }} - {{ trip.description }}">
+      <div class="card-body">
+        <h5 class="card-title"><a href="{{ trip.url }}">{{ trip.description }}</a></h5>
+      </div>
+      <div class="card-footer">
+        <span class="badge bg-light text-dark"><i class="bi bi-calendar3 text-danger" role="img" aria-label="Calendar"></i> {{ trip.date | date: "%b %Y" }}</span>
+        <span class="badge bg-light text-dark"><i class="bi-signpost-2-fill text-success" role="img" aria-label="Distance"></i> {{ trip.distance | append: " miles" }}</span>
+        <span class="badge bg-light text-dark"><i class="bi-geo-alt-fill text-primary" role="img" aria-label="Places"></i> {{ trip.places.size }}</span>
+      </div>
+    </div>
+  </div>
+  {% endfor -%}
+</div>
+
+
+
+<!-- <div class="row row-bwr-trip-features align-items-stretch flex-nowrap py-5 bg-cover row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
+  {% for trip in site.bwr-trips -%}
+  {% assign tripId = 'bwr-' | append: trip.slug -%}
   <div class="col">
 
     <div class="card h-100 overflow-hidden text-white bg-cover bg-dark rounded-5 shadow-lg" style="background-image: url('/assets/images/{{ tripId }}.jpg');">
@@ -33,11 +54,11 @@ hide-global-nav: true
     </div>
 
   </div>
-  {% endfor %}
-</div>
-{% for trip in site.bwr-trips %}
-{% assign tripId = 'bwr-' | append: trip.slug %}
+  {% endfor -%}
+</div> -->
 
+{% for trip in site.bwr-trips -%}
+{% assign tripId = 'bwr-' | append: trip.slug -%}
 <div class="row row-bwr-trip" id="{{ tripId }}">
   <div class="col-lg-4 px-0 overflow-auto">
     <nav class="navbar navbar-light bg-light">
@@ -74,7 +95,7 @@ hide-global-nav: true
     </div>
     <!-- Trip places -->
     <div class="row row-bwr-trip-places row-cols-1 mx-3 my-2 flex-nowrap flex-lg-wrap">
-      {% for place in trip.places %}
+      {% for place in trip.places -%}
       <div class="col ps-0 pe-0">
         <div class="card overflow-hidden border-light h-100" id="{{ tripId | append: '-place-' | append: forloop.index }}" data-name="{{ place.name  }}" data-location="{{ place.location }}"  data-type="{{ place.type }}" data-latlng="{{ place.latlng | jsonify  }}">
           <div class="row">
@@ -90,10 +111,10 @@ hide-global-nav: true
           </div>
         </div>
       </div>
-      {% endfor %}
+      {% endfor -%}
     </div>
   </div>
   <div class="col-lg-8 map" id="map-{{ forloop.index }}">
   </div>
 </div>
-{% endfor %}
+{% endfor -%}
