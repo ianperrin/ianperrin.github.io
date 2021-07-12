@@ -1,0 +1,98 @@
+---
+---
+
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+
+html {
+  height: 100%;
+}
+body {
+  height: 100% !important;
+  overflow: hidden !important;
+}
+main > .container-fluid {
+  position: absolute;
+  top: 56px;
+  bottom: 50px;
+  right: 0;
+  left: 0;
+  overflow-y: auto;
+  -ms-scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
+}
+main > .container-fluid > .row {
+  height: 100%!important;
+  scroll-snap-align: start;
+}
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* trips */
+  main > .container-fluid > .row > .col:first-child,
+  main > .container-fluid > .row > .col-lg-4:first-child {
+    max-height: calc(100vh - 106px);
+  }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { 
+  .row-bwr-trip-places {
+    overflow-x: auto;
+  }
+  .row-bwr-trip > .col-lg-4 {
+    height: calc(50vh - 56px);
+  }
+  .map {
+    height: calc(50vh - 50px);
+  }
+}
+
+/* All devices */
+/* top nav */
+.navbar.fixed-top {
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05),inset 0 -1px 0 rgba(0,0,0,0.15);
+  .navbar-brand {
+    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #39c;
+  }
+  .navbar-text {
+    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+}
+.navbar.fixed-bottom {
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05),inset 0 1px 0 rgba(0,0,0,0.15);
+  .navbar-brand {
+    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+}
+/* trip feature cards */
+// main > .container-fluid > .row:first-of-type {
+//   overflow-x: auto;
+// }
+.row-bwr-trip-features {
+  overflow-x: auto;
+  background-image: linear-gradient(rgba(13, 110, 253, 0.1), rgba(13, 110, 253, 0.1)), url('/assets/images/bwr-splash.jpg'); 
+}
+.row-bwr-trip-features > .col {
+    max-height: calc(75vh - 106px) !important;
+}
+.bg-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
+.text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
+.text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
+
+.rounded-4 { border-radius: .5rem; }
+.rounded-5 { border-radius: 1rem; }
+
+// Custom Icons
+.fa-drink:before {
+  content: "\f0f4";
+}
+.fa-food:before {
+  content: "\f2e7";
+}

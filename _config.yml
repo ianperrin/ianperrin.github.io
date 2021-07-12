@@ -1,35 +1,37 @@
-# Site settings
-name: Ian Perrin
+# Site info
+title: Ian Perrin
+tagline: Dad, technologist, biker and SWFC fan.
 description: Dad, technologist, home automation enthusiast, biker and SWFC fan.
-author: Ian Perrin
-url: https://ianperrin.com
+author: ianperrin
 lang: en_GB
-
-# Handling Reading
-encoding:     "utf-8"
+repository: ianperrin/ianperrin.github.io
 
 # Outputting
-timezone:      "Europe/London"
-permalink:     "/:categories/:title"
+baseurl: ""
+timezone: Europe/London
 
-# Gems
-gems:
-  - jekyll-sitemap
-  - jekyll-feed
+# Site config
+highlighter: rouge
+
+sass:
+  style: compressed
+
+# Plugins
+plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+# Collections
+collections_dir: _collections
+collections:
+  bwr-trips:
+    title: The Beautiful Way Round
+    permalink: /the-beautiful-way-round/#bwr-:name
 
 # Front Matter defaults
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
-      type: "pages"
     values:
-      layout: "minimal"
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "minimal"
-      author: "Ian Perrin"
+      layout: default

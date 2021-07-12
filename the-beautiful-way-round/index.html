@@ -1,0 +1,99 @@
+---
+title: The Beautiful Way Round
+description: A motorcycle tour of the English and Welsh coastline
+redirect_from:
+  - /thebeautifulwayround/
+  - /tbwr/
+layout: bwr
+hide-global-nav: true
+---
+<!-- Trip features -->
+<div class="row row-bwr-trip-features align-items-stretch flex-nowrap py-5 bg-cover row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
+  {% for trip in site.bwr-trips %}
+  {% assign tripId = 'bwr-' | append: trip.slug %}
+  <div class="col">
+
+    <div class="card h-100 overflow-hidden text-white bg-cover bg-dark rounded-5 shadow-lg" style="background-image: url('/assets/images/{{ tripId }}.jpg');">
+      <div class="d-flex flex-column h-100 p-3 pb-3 text-white text-shadow-1">
+        <h2 class="pt-5 mt-5 mb-4 lh-1 fw-bold">{{ trip.description }}</h2>
+        <ul class="d-flex list-unstyled mt-auto">
+          <li class="me-auto">
+            <a href="{{ trip.url }}" class="btn btn-primary">{{ trip.title }}</a>
+          </li>
+          <li class="d-flex align-items-center me-3">
+            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+            <small>{{ trip.distance | append: " miles" }}</small>
+          </li>
+          <li class="d-flex align-items-center">
+            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+            <small>{{ trip.date | date: "%b %Y" }}</small>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
+</div>
+{% for trip in site.bwr-trips %}
+{% assign tripId = 'bwr-' | append: trip.slug %}
+
+<div class="row row-bwr-trip" id="{{ tripId }}">
+  <div class="col-lg-4 px-0 overflow-auto">
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">{{ trip.title }}: {{ trip.description }}</span>
+      </div>
+    </nav>
+    <!-- Trip stats -->
+    <div class="row row-bwr-trip-stats row-cols-3  mx-3 mt-3 text-center">
+      <div class="col ps-0">
+        <div class="card h-100">
+          <div class="card-body">
+            <i class="bi bi-calendar3 fs-3 text-danger" role="img" aria-label="Calendar"></i>
+            <h5 class="card-title fs-6">{{ trip.date | date: "%b %y" }}</h5>
+            </div>
+        </div>
+      </div>
+      <div class="col px-0">
+        <div class="card h-100">
+          <div class="card-body">
+            <i class="bi-signpost-2-fill fs-3 text-success" role="img" aria-label="Distance"></i>
+            <h5 class="card-title fs-6">{{ trip.distance | append: " miles"  }}</h5>
+            </div>
+        </div>
+      </div>
+      <div class="col pe-0">
+        <div class="card h-100">
+          <div class="card-body">
+            <i class="bi bi-geo-alt-fill fs-3 text-primary" role="img" aria-label="Places"></i>
+            <h5 class="card-title fs-6">{{ trip.places.size }}</h5>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trip places -->
+    <div class="row row-bwr-trip-places row-cols-1 mx-3 my-2 flex-nowrap flex-lg-wrap">
+      {% for place in trip.places %}
+      <div class="col ps-0 pe-0">
+        <div class="card overflow-hidden border-light h-100" id="{{ tripId | append: '-place-' | append: forloop.index }}" data-name="{{ place.name  }}" data-location="{{ place.location }}"  data-type="{{ place.type }}" data-latlng="{{ place.latlng | jsonify  }}">
+          <div class="row">
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title"><i class="fas fa-fw fa-{{ place.type }} text-primary"></i> {{ place.name }}</h5>
+                <p class="card-text"><small class="text-muted">{{ place.location }}</small></p>
+              </div>
+            </div>
+            <div class="col-3">
+              <img src="http://via.placeholder.com/228x208" class="img-fluid rounded-start" alt="{{ place.name }}, {{ place.location }}" title="{{ place.name }}, {{ place.location }}">
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col-lg-8 map" id="map-{{ forloop.index }}">
+  </div>
+</div>
+{% endfor %}
