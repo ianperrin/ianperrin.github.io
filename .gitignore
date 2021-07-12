@@ -11,7 +11,9 @@ _site/
 ### Ruby ###
 ############
 
-vendor/
+## Environment normalization:
+/.bundle/
+/vendor/
 
 ###############
 ### VS Code ###
