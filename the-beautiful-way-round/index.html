@@ -26,37 +26,6 @@ hide-global-nav: true
   </div>
   {% endfor -%}
 </div>
-
-
-
-<!-- <div class="row row-bwr-trip-features align-items-stretch flex-nowrap py-5 bg-cover row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6">
-  {% for trip in site.bwr-trips -%}
-  {% assign tripId = 'bwr-' | append: trip.slug -%}
-  <div class="col">
-
-    <div class="card h-100 overflow-hidden text-white bg-cover bg-dark rounded-5 shadow-lg" style="background-image: url('/assets/images/{{ tripId }}.jpg');">
-      <div class="d-flex flex-column h-100 p-3 pb-3 text-white text-shadow-1">
-        <h2 class="pt-5 mt-5 mb-4 lh-1 fw-bold">{{ trip.description }}</h2>
-        <ul class="d-flex list-unstyled mt-auto">
-          <li class="me-auto">
-            <a href="{{ trip.url }}" class="btn btn-primary">{{ trip.title }}</a>
-          </li>
-          <li class="d-flex align-items-center me-3">
-            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
-            <small>{{ trip.distance | append: " miles" }}</small>
-          </li>
-          <li class="d-flex align-items-center">
-            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
-            <small>{{ trip.date | date: "%b %Y" }}</small>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-  {% endfor -%}
-</div> -->
-
 {% for trip in site.bwr-trips -%}
 {% assign tripId = 'bwr-' | append: trip.slug -%}
 <div class="row row-bwr-trip" id="{{ tripId }}">
@@ -93,8 +62,8 @@ hide-global-nav: true
         </div>
       </div>
     </div>
-    <!-- Trip places -->
-    <div class="row row-bwr-trip-places row-cols-1 mx-3 my-2 flex-nowrap flex-lg-wrap">
+    <!-- Trip places ss-->
+    <div class="row row-bwr-trip-places row-cols-1 mx-3 my-2 flex-nowrap flex-lg-wrap g-2">
       {% for place in trip.places -%}
       <div class="col ps-0 pe-0">
         <div class="card overflow-hidden border-light h-100" id="{{ tripId | append: '-place-' | append: forloop.index }}" data-name="{{ place.name  }}" data-location="{{ place.location }}"  data-type="{{ place.type }}" data-latlng="{{ place.latlng | jsonify  }}">
