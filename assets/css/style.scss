@@ -35,21 +35,35 @@ main > .container-fluid > .row {
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   /* trips */
-  main > .container-fluid > .row > .col:first-child,
-  main > .container-fluid > .row > .col-lg-4:first-child {
-    max-height: calc(100vh - #{$navbar-top-height} - #{$navbar-bottom-height});
+  .col-bwr-trip-info {
+    overflow: auto;
+  }
+  .row-bwr-trip, .col-bwr-trip-info, .map {
+    height: calc(100vh - #{$navbar-top-height} - #{$navbar-bottom-height});
+    background-color: red;
   }
 }
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) { 
-  .row-bwr-trip-places {
-    overflow-x: auto;
-  }
-  .row-bwr-trip > .col-lg-4 {
-    height: calc(50vh - #{$navbar-top-height});
+  .col-bwr-trip-info {
+    height: 50%;
+    .row-bwr-trip-stats > .col {
+      height: calc(50% - 24px);
+    }
+    .row-bwr-trip-places {
+      overflow-x: auto;
+      -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+    
+    }
+    .row-bwr-trip-places > .col {
+      height: calc(50% - 24px);
+      scroll-snap-align: start;
+
+    }
   }
   .map {
-    height: calc(50vh - #{$navbar-bottom-height});
+    height: 50%;
   }
 }
 /* All devices */
