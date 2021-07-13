@@ -40,7 +40,6 @@ main > .container-fluid > .row {
   }
   .row-bwr-trip, .col-bwr-trip-info, .map {
     height: calc(100vh - #{$navbar-top-height} - #{$navbar-bottom-height});
-    background-color: red;
   }
 }
 /* Medium devices (tablets, less than 992px) */
