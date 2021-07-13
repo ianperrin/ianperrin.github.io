@@ -46,7 +46,7 @@ scripts:
       <ul class="navbar-nav">
         {% for trip in site.bwr-trips -%}
         <li class="nav-item">
-          <a class="nav-link" href="{{ trip.url }}" title="{{ trip.title }}: {{ trip.description }}">{{ trip.title }}</a>
+          <a class="nav-link" href="{{ trip.url }}" title="{{ trip.title }} - {{ trip.description }}">{{ trip.title }}<span class="d-lg-none"> - {{ trip.description }}</span></a>
         </li>
         {% endfor -%}
       </ul>

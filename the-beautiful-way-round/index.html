@@ -19,9 +19,10 @@ hide-global-nav: true
         <h5 class="card-title"><a href="{{ trip.url }}">{{ trip.description }}</a></h5>
       </div>
       <div class="card-footer">
-        <span class="badge bg-light text-dark"><i class="bi bi-calendar3 text-danger" role="img" aria-label="Calendar"></i> {{ trip.date | date: "%b %Y" }}</span>
-        <span class="badge bg-light text-dark"><i class="bi-signpost-2-fill text-success" role="img" aria-label="Distance"></i> {{ trip.distance | append: " miles" }}</span>
-        <span class="badge bg-light text-dark"><i class="bi-geo-alt-fill text-primary" role="img" aria-label="Places"></i> {{ trip.places.size }}</span>
+        <span class="badge rounded-pill bg-warning text-dark"><i class="bi bi-hash fw-bold" role="img" aria-label="Count"></i>{{ forloop.index }} </span>
+        <span class="badge rounded-pill bg-danger"><i class="bi bi-calendar3" role="img" aria-label="Date"></i> {{ trip.date | date: "%b %Y" }}</span>
+        <span class="badge rounded-pill bg-success"><i class="bi-signpost-2-fill" role="img" aria-label="Distance"></i> {{ trip.distance | append: " mi" }}</span>
+        <span class="badge rounded-pill bg-primary"><i class="bi-geo-alt-fill" role="img" aria-label="Places"></i> {{ trip.places.size }}</span>
       </div>
     </div>
   </div>
