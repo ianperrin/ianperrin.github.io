@@ -39,10 +39,10 @@ scripts:
       <i class="fas fa-route" width="30" height="24"></i>
       {{ page.title }}
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavBwr" aria-controls="navbarNavBwr" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNavBwr">
       <ul class="navbar-nav">
         {% for trip in site.bwr-trips -%}
         <li class="nav-item">
@@ -55,7 +55,7 @@ scripts:
 </nav>
 
 <main>
-  <div class="container-fluid bg-success" >
+  <div class="container-fluid bg-success">
     {{ content }}
   </div>
 </main>
