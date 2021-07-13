@@ -1,4 +1,3 @@
-
 // Local variables
 const mapMarkers = {
   drink: getMarker('fa-coffee', 'red', 'circle', 'fas'),
@@ -10,7 +9,6 @@ const placeLayers = [];
 
 const mapDivs = document.querySelectorAll("div.map");
 mapDivs.forEach(initMap);
-
 
 function initMap(mapDiv, mapIndex) {
 

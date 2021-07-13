@@ -9,11 +9,11 @@ layout: bwr
 hide-global-nav: true
 ---
 <!-- Trip features -->
-<div class="row row-bwr-trip-features align-items-stretch flex-nowrap bg-cover row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 p-4">
+<div class="row row-bwr-trip-features align-items-center flex-nowrap bg-cover row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 p-4">
   {% for trip in site.bwr-trips -%}
   {% assign tripId = 'bwr-' | append: trip.slug -%}
-  <div class="col py-5">
-    <div class="card">
+  <div class="col">
+    <div class="card h-100">
       <img src="/assets/images/{{ tripId }}.jpg" class="card-img-top img-fluid" alt="{{ trip.title }} - {{ trip.description }}">
       <div class="card-body">
         <h5 class="card-title"><a href="{{ trip.url }}">{{ trip.description }}</a></h5>
