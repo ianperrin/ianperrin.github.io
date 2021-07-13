@@ -51,7 +51,9 @@ function initMap(mapDiv, mapIndex) {
   };
   const route = new L.geoJSON.ajax( routeGeoJson, routeOptions );
   route.on("data:loaded", function() {
-    maps[mapIndex].fitBounds(route.getBounds().pad(0.1));
+    maps[mapIndex].fitBounds(route.getBounds().pad(0.1))
+      .setMaxBounds(route.getBounds().pad(0.1))
+      .setMinZoom(maps[mapIndex].getZoom());
   }).addTo(maps[mapIndex]);
 
   // Places Layer 
