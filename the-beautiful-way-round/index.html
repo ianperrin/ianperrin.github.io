@@ -27,17 +27,20 @@ hide-global-nav: true
   </div>
   {% endfor -%}
 </div>
+<!-- Trip detail -->
 {% for trip in site.bwr-trips -%}
 {% assign tripId = 'bwr-' | append: trip.slug -%}
 <div class="row row-bwr-trip" id="{{ tripId }}">
-  <div class="col-lg-4 col-bwr-trip-info px-0">
+  <div class="col-12 px-0">
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1">{{ trip.title }}: {{ trip.description }}</span>
       </div>
     </nav>
+  </div>
+  <div class="col-lg-4 col-bwr-trip-info p-3">
     <!-- Trip stats -->
-    <div class="row row-bwr-trip-stats row-cols-3 m-3 text-center">
+    <div class="row row-bwr-trip-stats row-cols-3 mx-0 mb-3 text-center">
       <div class="col ps-0">
         <div class="card h-100">
           <div class="card-body">
@@ -64,7 +67,7 @@ hide-global-nav: true
       </div>
     </div>
     <!-- Trip places -->
-    <div class="row row-bwr-trip-places row-cols-1 mx-3 flex-nowrap flex-lg-wrap mb-lg-3 gy-lg-2">
+    <div class="row row-bwr-trip-places row-cols-1 mx-0 flex-nowrap flex-lg-wrap gy-lg-2">
       {% for place in trip.places -%}
       <div class="col ps-0 pe-0">
         <div class="card overflow-hidden border-light h-100" id="{{ tripId | append: '-place-' | append: forloop.index }}" data-name="{{ place.name  }}" data-location="{{ place.location }}"  data-type="{{ place.type }}" data-latlng="{{ place.latlng | jsonify  }}">
@@ -84,7 +87,9 @@ hide-global-nav: true
       {% endfor -%}
     </div>
   </div>
-  <div class="col-lg-8 map" id="map-{{ forloop.index }}">
+  <!-- Trip map -->
+  <div class="col-lg-8 col-bwr-trip-map p-3 ps-lg-0 rounded-5">
+    <div class="map h-100 rounded-5" id="map-{{ forloop.index }}"></div>
   </div>
 </div>
 {% endfor -%}

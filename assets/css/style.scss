@@ -38,16 +38,19 @@ main > .container-fluid > .row {
   .col-bwr-trip-info {
     overflow: auto;
   }
-  .row-bwr-trip, .col-bwr-trip-info, .map {
+  .row-bwr-trip {
     height: 100% !important;
+  }
+  .col-bwr-trip-info, .col-bwr-trip-map {
+    height: calc(100% - #{$navbar-bottom-height}) !important;
   }
 }
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) { 
   .col-bwr-trip-info {
-    height: 50%;
+    height: calc(50% - #{$navbar-bottom-height}/2);
     .row-bwr-trip-stats > .col {
-      height: calc(50% - 24px);
+      height: 50%;
     }
     .row-bwr-trip-places {
       overflow-x: auto;
@@ -56,13 +59,13 @@ main > .container-fluid > .row {
     
     }
     .row-bwr-trip-places > .col {
-      height: calc(50% - 24px);
+      height: 50%;
       scroll-snap-align: start;
 
     }
   }
-  .map {
-    height: 50%;
+  .col-bwr-trip-map {
+    height: calc(50% - #{$navbar-bottom-height}/2);
   }
 }
 /* All devices */
