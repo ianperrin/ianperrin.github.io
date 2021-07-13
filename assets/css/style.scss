@@ -4,6 +4,13 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
 
+// Variables
+$font-architects-daughter: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+// navbar padding (1rem) + navbar-brand padding (2 * 0.3125rem) + navbar-brand font size * line height (1.25rem * 1.5)
+$navbar-top-height: 3.5rem; //calc(1rem + .625rem + 1.25rem + .625rem);
+// navbar padding (1rem) + navbar-brand padding (2 * 0.3125rem) + navbar-brand font size * line height (1rem * 1.5)
+$navbar-bottom-height: 3.125rem; //calc(1rem + .625rem + 1rem + .5rem);
+
 html {
   height: 100%;
 }
@@ -13,8 +20,8 @@ body {
 }
 main > .container-fluid {
   position: absolute;
-  top: 56px;
-  bottom: 50px;
+  top: $navbar-top-height;
+  bottom: $navbar-bottom-height;
   right: 0;
   left: 0;
   overflow-y: auto;
@@ -30,51 +37,47 @@ main > .container-fluid > .row {
   /* trips */
   main > .container-fluid > .row > .col:first-child,
   main > .container-fluid > .row > .col-lg-4:first-child {
-    max-height: calc(100vh - 106px);
+    max-height: calc(100vh - #{$navbar-top-height} - #{$navbar-bottom-height});
   }
 }
-
 /* Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) { 
   .row-bwr-trip-places {
     overflow-x: auto;
   }
   .row-bwr-trip > .col-lg-4 {
-    height: calc(50vh - 56px);
+    height: calc(50vh - #{$navbar-top-height});
   }
   .map {
-    height: calc(50vh - 50px);
+    height: calc(50vh - #{$navbar-bottom-height});
   }
 }
-
 /* All devices */
 /* top nav */
 .navbar.fixed-top {
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05),inset 0 -1px 0 rgba(0,0,0,0.15);
   .navbar-brand {
-    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $font-architects-daughter;
     color: #39c;
   }
   .navbar-text {
-    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $font-architects-daughter;
   }
 }
+/* bottom nav */
 .navbar.fixed-bottom {
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05),inset 0 1px 0 rgba(0,0,0,0.15);
   .navbar-brand {
-    font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $font-architects-daughter;
   }
 }
 /* trip feature cards */
-// main > .container-fluid > .row:first-of-type {
-//   overflow-x: auto;
-// }
 .row-bwr-trip-features {
   overflow-x: auto;
   background-image: linear-gradient(rgba(13, 110, 253, 0.1), rgba(13, 110, 253, 0.1)), url('/assets/images/bwr-splash.jpg'); 
 }
 .row-bwr-trip-features > .col {
-    max-height: calc(75vh - 106px) !important;
+    max-height: calc(75vh - #{$navbar-top-height} - #{$navbar-bottom-height}) !important;
 }
 .bg-cover {
   background-repeat: no-repeat;
