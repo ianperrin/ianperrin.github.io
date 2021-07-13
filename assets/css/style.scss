@@ -39,7 +39,7 @@ main > .container-fluid > .row {
     overflow: auto;
   }
   .row-bwr-trip, .col-bwr-trip-info, .map {
-    height: calc(100vh - #{$navbar-top-height} - #{$navbar-bottom-height});
+    height: 100% !important;
   }
 }
 /* Medium devices (tablets, less than 992px) */
