@@ -21,6 +21,7 @@ scripts:
     <meta name="robots" content="index,follow">
     {% seo -%}
     {% include head-styles.html -%}
+    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon-16x16.png">
@@ -35,7 +36,10 @@ scripts:
     {% if page.hide-global-nav != true -%}
     <nav class="navbar navbar-expand navbar-light bg-light fixed-top ">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">{{ site.title }}</a>
+        <a class="navbar-brand" href="/" title="{{ site.title }} | {{ site.tagline }}">
+          <img src="/assets/images/favicon-32x32.png" alt="{{ site.title }}" width="24" height="24" class="d-inline-block align-text-top">
+          {{ site.title }}
+        </a>
         <ul class="navbar-nav ml-auto">
         {% assign person = site.data.people[0] -%}
         {% for profile in site.data.people[0].profiles -%}
