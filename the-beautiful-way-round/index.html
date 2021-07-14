@@ -1,7 +1,7 @@
 ---
 title: The Beautiful Way Round
 description: A motorcycle tour of the English and Welsh coastline
-image: /assets/images/bwr-trip-2.jpg
+image: /assets/images/bwr-trips/bwr-trip-2.jpg
 redirect_from:
   - /thebeautifulwayround/
   - /tbwr/
@@ -14,7 +14,7 @@ hide-global-nav: true
   {% assign tripId = 'bwr-' | append: trip.slug -%}
   <div class="col">
     <div class="card h-100">
-      <img src="/assets/images/{{ tripId }}.jpg" class="card-img-top img-fluid" alt="{{ trip.title }} - {{ trip.description }}">
+      <img src="/assets/images/bwr-trips/{{ tripId }}.jpg" class="card-img-top img-fluid" alt="{{ trip.title }} - {{ trip.description }}">
       <div class="card-body">
         <h5 class="card-title"><a href="{{ trip.url }}">{{ trip.description }}</a></h5>
       </div>
