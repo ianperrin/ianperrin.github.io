@@ -30,6 +30,10 @@ highlighter: rouge
 sass:
   style: compressed
 
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+
 # Plugins
 plugins:
   - jekyll-seo-tag
