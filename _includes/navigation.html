@@ -7,7 +7,7 @@
     </a>
     <ul class="navbar-nav ml-auto">
     {% for profile in site.data.people[0].profiles -%}
-        <li class="nav-item"> <a class="nav-link" href="{{ profile.url }}" title="{{ profile.url | remove_first: "https://" }}" target="_blank"> <i class="{{ profile.prefix }} fa-{{ profile.icon }} fa-fw"></i> <span class="d-none">{{ profile.url | remove_first: "https://" }}</span></a> </li>
+        <li class="nav-item"> <a class="nav-link" href="{{ profile.url }}" title="{{ profile.url | remove_first: 'https://'' }}" target="_blank"> <i class="{{ profile.prefix }} fa-{{ profile.icon }} fa-fw"></i> <span class="d-none">{{ profile.url | remove_first: "https://" }}</span></a> </li>
     {% endfor -%}
     </ul>
   </div>

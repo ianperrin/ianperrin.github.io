@@ -19,6 +19,8 @@ timezone: Europe/London
 exclude:
   - vendor
   - /LICENSE
+  - /Gemfile
+  - /Gemfile.lock
   - /params.json
   - /README.md
 

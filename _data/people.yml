@@ -12,7 +12,7 @@
     - name: salesforce
       url: "https://trailblazer.me/id/ianperrin"
       icon: salesforce
-      prefix: fab 
+      prefix: fab
     - name: strava
       url: "https://strava.com/athletes/ianperrin/"
       icon: strava
