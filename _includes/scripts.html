@@ -1,0 +1,26 @@
+{% if include.scripts -%}
+    {% for script in include.scripts -%}
+        {% if script.sri -%}
+            <script src="{{ script.src }}" integrity="{{ script.sri }}" crossorigin="anonymous"></script>
+        {% elsif script.src -%}
+            <script src="{{ script.src }}"></script>
+        {% else -%}
+            <script src="{{ script | relative_url }}"></script>
+        {% endif -%}
+    {% endfor -%}
+{% else -%}
+    {% for framework in layout.frameworks -%}
+        {% assign scripts = site.data.frameworks[framework].scripts -%}
+        {% if scripts -%}
+            {% include scripts.html scripts=scripts -%}
+        {% endif -%}
+    {% endfor -%}
+    {% for framework in page.frameworks -%}
+        {% assign scripts = site.data.frameworks[framework].scripts -%}
+        {% if scripts -%}
+            {% include scripts.html scripts=scripts -%}
+        {% endif -%}
+    {% endfor -%}
+    {% if layout.scripts -%}{% include scripts.html scripts=layout.scripts -%}{% endif -%}
+    {% if page.scripts -%}{% include scripts.html scripts=page.scripts -%}{% endif -%}
+{% endif -%}

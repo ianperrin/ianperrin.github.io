@@ -1,0 +1,38 @@
+{% if page.hide-global-nav != true -%}
+<nav id="navbar-global" class="navbar navbar-expand navbar-light bg-light fixed-top ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/" title="{{ site.title }} | {{ site.tagline }}">
+      <img src="/assets/images/brand/favicon-32x32.png" alt="{{ site.title }}" width="24" height="24" class="d-inline-block align-text-top">
+      {{ site.title }}
+    </a>
+    <ul class="navbar-nav ml-auto">
+    {% for profile in site.data.people[0].profiles -%}
+        <li class="nav-item"> <a class="nav-link" href="{{ profile.url }}" title="{{ profile.url | remove_first: "https://" }}" target="_blank"> <i class="{{ profile.prefix }} fa-{{ profile.icon }} fa-fw"></i> <span class="d-none">{{ profile.url | remove_first: "https://" }}</span></a> </li>
+    {% endfor -%}
+    </ul>
+  </div>
+</nav>
+{% endif -%}
+{% if page.collection -%}
+{% assign collection = site.collections | where: "label", page.collection | first %}
+<nav id="navbar-{{ collection.label }}" class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{ page.url }}">
+      <i class="fas {{ collection.icon }}" width="30" height="24"></i>
+      {{ collection.title }}
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavCollection" aria-controls="navbarNavCollection" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavCollection">
+      <ul class="navbar-nav">
+        {% for item in site[collection.label] -%}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ item.url }}" title="{{ item.title }} - {{ item.description }}">{{ item.title }}<span class="d-lg-none"> - {{ item.description }}</span></a>
+        </li>
+        {% endfor -%}
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endif -%}

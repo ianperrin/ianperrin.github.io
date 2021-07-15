@@ -1,61 +1,7 @@
 ---
 layout: default
-styles:
-  -
-    href: https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css
-    sri: sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC
-  -
-    href: https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css
-  - 
-    href: https://use.fontawesome.com/releases/v5.15.3/css/all.css
-    sri: sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk
-  -
-    href: https://unpkg.com/leaflet@1.7.1/dist/leaflet.css
-    sri: sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==
-  -
-    href: https://cdn.jsdelivr.net/npm/leaflet-extra-markers@1.2.1/dist/css/leaflet.extra-markers.min.css
-    sri: sha256-7Zr0s0MoLVy6pFTRq2DKuki8xw1OzRYY1Q3S2pTDtvo=
-  -
-    href: /assets/css/style.css
-scripts:
-  -
-    src: https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js
-    sri: sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM
-  -
-    src: https://unpkg.com/leaflet@1.7.1/dist/leaflet.js
-    sri: sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==
-  -
-    src: https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js
-    sri: sha512-Abr21JO2YqcJ03XGZRPuZSWKBhJpUAR6+2wH5zBeO4wAw4oksr8PRdF+BKIRsxvCdq+Mv4670rZ+dLnIyabbGw==
-  -
-    src: https://cdn.jsdelivr.net/npm/leaflet-extra-markers@1.2.1/dist/js/leaflet.extra-markers.min.js" integrity
-    sri: sha256-nm8fKiOVLndTf7KD5YEPuMSb0kv9IH7fDyZ+zlF8s/0=
-  -
-    src: /assets/scripts/bwr-main.js
----
-<nav id="navbar-bwr" class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{{ page.url }}">
-      <i class="fas fa-route" width="30" height="24"></i>
-      {{ page.title }}
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavBwr" aria-controls="navbarNavBwr" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavBwr">
-      <ul class="navbar-nav">
-        {% for trip in site.bwr-trips -%}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ trip.url }}" title="{{ trip.title }} - {{ trip.description }}">{{ trip.title }}<span class="d-lg-none"> - {{ trip.description }}</span></a>
-        </li>
-        {% endfor -%}
-      </ul>
-    </div>
-  </div>
-</nav>
 
-<main>
-  <div class="container-fluid bg-success">
-    {{ content }}
-  </div>
-</main>
+---
+<div class="container-fluid bg-success">
+  {{ content }}
+</div>

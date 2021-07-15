@@ -6,11 +6,19 @@ redirect_from:
   - /thebeautifulwayround/
   - /tbwr/
 layout: bwr
+frameworks:
+  - bootstrap-icons
+  - leaflet-js
+  - leaflet-js-ajax
+  - leaflet-js-extra-markers
+scripts:
+  - /assets/scripts/bwr-main.js
+collection: bwr-trips
 hide-global-nav: true
 ---
 <!-- Trip features -->
 <div class="row row-bwr-trip-features align-items-center flex-nowrap bg-cover row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 p-4">
-  {% for trip in site.bwr-trips -%}
+  {% for trip in site['bwr-trips'] -%}
   {% assign tripId = 'bwr-' | append: trip.slug -%}
   <div class="col">
     <div class="card h-100">

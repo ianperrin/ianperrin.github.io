@@ -1,0 +1,26 @@
+{% if include.styles -%}
+    {% for style in include.styles -%}
+        {% if style.sri -%}
+            <link rel="stylesheet" href="{{ style.href }}" integrity="{{ style.sri }}" crossorigin="anonymous" />
+        {% elsif frameworkStyle.href -%}
+            <link rel="stylesheet" href="{{ style.href }}" />
+        {% else -%}
+            <link rel="stylesheet" href="{{ style | relative_url }}" />
+        {% endif -%}
+    {% endfor -%}
+{% else -%}
+    {% for framework in layout.frameworks -%}
+        {% assign styles = site.data.frameworks[framework].styles -%}
+        {% if styles -%}
+            {% include head/styles.html styles=styles -%}
+        {% endif -%}
+    {% endfor -%}
+    {% for framework in page.frameworks -%}
+        {% assign styles = site.data.frameworks[framework].styles -%}
+        {% if styles -%}
+            {% include head/styles.html styles=styles -%}
+        {% endif -%}
+    {% endfor -%}
+    {% if layout.styles -%}{% include head/styles.html styles=layout.styles -%}{% endif -%}
+    {% if page.styles -%}{% include head/styles.html styles=page.styles -%}{% endif -%}
+{% endif -%}

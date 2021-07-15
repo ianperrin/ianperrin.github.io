@@ -1,9 +1,0 @@
-{% for script in layout.scripts -%}
-    {% if script.sri -%}
-    <script src="{{ script.src }}" integrity="{{ script.sri }}" crossorigin="anonymous"></script>
-    {% elsif script.src -%}
-    <script src="{{ script.src }}"></script>
-    {% else -%}
-    <script src="{{ script }}"></script>
-    {% endif -%}
-{% endfor -%}

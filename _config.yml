@@ -39,6 +39,8 @@ collections_dir: _collections
 collections:
   bwr-trips:
     title: The Beautiful Way Round
+    description: A motorcycle tour of the English and Welsh coastline.
+    icon: fa-route
     permalink: /the-beautiful-way-round/#bwr-:name
 
 # Front Matter defaults

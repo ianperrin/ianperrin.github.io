@@ -1,0 +1,8 @@
+styles:
+  -
+    href: https://cdn.jsdelivr.net/npm/leaflet-extra-markers@1.2.1/dist/css/leaflet.extra-markers.min.css
+    sri: sha256-7Zr0s0MoLVy6pFTRq2DKuki8xw1OzRYY1Q3S2pTDtvo=
+scripts:
+  -
+    src: https://cdn.jsdelivr.net/npm/leaflet-extra-markers@1.2.1/dist/js/leaflet.extra-markers.min.js
+    sri: sha256-nm8fKiOVLndTf7KD5YEPuMSb0kv9IH7fDyZ+zlF8s/0=

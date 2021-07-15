@@ -1,9 +1,0 @@
-{% for style in layout.styles -%}
-    {% if style.sri -%}
-    <link rel="stylesheet" href="{{ style.href }}" integrity="{{ style.sri }}" crossorigin="anonymous" />
-    {% elsif style.href -%}
-    <link rel="stylesheet" href="{{ style.href }}" />
-    {% else -%}
-    <link rel="stylesheet" href="{{ style }}" />
-    {% endif -%}
-{% endfor -%}

@@ -1,22 +1,19 @@
 ---
 layout: default
 ---
-<main>
-  <div class="container-fluid px-0">
-    <!-- <p>{{ site.description }}</p> -->
-    {% for collection in site.collections -%}
-      {% if collection.label != 'posts' -%}
-        <div class="p-3 p-lg-5 mb-4 bg-light rounded-3">
-          <div class="container-fluid py-5">
-            <h1 class="display-6 fw-bold">
-              <i class="fas fa-route d-inline-block align-text-top"></i>
-              {{ collection.title }}
-            </h1>
-            <p class="col-md-8 fs-4">A motorcycle tour of the English and Welsh coastline</p>
-            <a href="{{ collection.permalink | replace: "#bwr-:name", "" }}" class="btn btn-primary btn-lg">Explore</a>
-          </div>
+<div class="container-fluid px-0">
+  {% for collection in site.collections -%}
+    {% if collection.label != 'posts' -%}
+      <div class="p-3 p-lg-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-6 fw-bold">
+            <i class="fas fa-route d-inline-block align-text-top"></i>
+            {{ collection.title | default: collection.label }}
+          </h1>
+          <p class="col-md-8 fs-4">{{ collection.description }}</p>
+          <a href="{{ collection.permalink | default: collection.label | split: '#' | slice: 0 }}" class="btn btn-primary btn-lg">Explore</a>
         </div>
-      {% endif -%}
-    {% endfor -%}
-  </div>
-</main>
+      </div>
+    {% endif -%}
+  {% endfor -%}
+</div>
