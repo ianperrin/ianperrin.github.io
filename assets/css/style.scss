@@ -47,10 +47,15 @@ main > .container-fluid > .row {
     height: calc(100% - #{$navbar-bottom-height}) !important;
   }
 }
-/* Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) {
+// /* Medium devices (tablets, less than 992px) */
+// @media (max-width: 991.98px) {
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
   .col-bwr-trip-info {
     height: calc(50% - #{$navbar-bottom-height}/ 2);
+    .bwr-trip-stats {
+      height: 50%;
+    }
     .row-bwr-trip-stats > .col {
       height: 50%;
     }
@@ -68,19 +73,49 @@ main > .container-fluid > .row {
     height: calc(50% - #{$navbar-bottom-height}/ 2);
   }
 }
+// X-Small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .bwr-trip-stats {
+    flex-direction: row !important;
+    display: flex !important;
+  }
+  .bwr-trip-stats.card-group > .card:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .bwr-trip-stats.card-group > .card:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .bwr-trip-stats.card-group > .card + .card {
+    margin-left: 0;
+    border-left: 0;
+  }
+  .bwr-trip-stats.card-group > .card {
+    flex: 1 0 0%;
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+}
+
 /* All devices */
 /* top nav */
 .navbar.fixed-top {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
   font-family: $font-architects-daughter;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   .navbar-brand {
     color: #39c;
   }
   .navbar-text {
     font-family: $font-architects-daughter;
   }
+}
+.row-bwr-trip .navbar.navbar-light {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  //  text-transform: uppercase;
 }
 /* bottom nav */
 .navbar.fixed-bottom {

@@ -48,8 +48,28 @@ hide-global-nav: true
     </nav>
   </div>
   <div class="col-lg-4 col-bwr-trip-info p-3 pe-lg-2">
-    <!-- Trip stats -->
-    <div class="row row-bwr-trip-stats row-cols-3 mx-0 mb-3 text-center">
+    <!-- Trip stats d-flex flex-row -->
+    <div class="card-group bwr-trip-stats text-center text-white mb-3">
+      <div class="card bg-dark border-light">
+        <div class="card-body">
+          <p class="card-text mb-0">{{ trip.date | date: "%b %y" }}</p>
+          <p class="card-text"><small class="text-muted">Date</small></p>
+        </div>
+      </div>
+      <div class="card bg-dark border-light">
+        <div class="card-body">
+          <p class="card-text mb-0">{{ trip.distance }}</p>
+          <p class="card-text"><small class="text-muted">Distance (mi)</small></p>
+        </div>
+      </div>
+      <div class="card bg-dark border-light">
+        <div class="card-body">
+          <p class="card-text mb-0">{{ trip.places.size }}</p>
+          <p class="card-text"><small class="text-muted">Stops</small></p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="row row-bwr-trip-stats row-cols-3 mx-0 mb-3 text-center">
       <div class="col ps-0">
         <div class="card h-100">
           <div class="card-body">
@@ -74,12 +94,12 @@ hide-global-nav: true
             </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Trip places -->
     <div class="row row-bwr-trip-places row-cols-1 mx-0 flex-nowrap flex-lg-wrap gy-lg-2">
       {% for place in trip.places -%}
       <div class="col ps-0 pe-0">
-        <div class="card overflow-hidden border-light h-100" id="{{ tripId | append: '-place-' | append: forloop.index }}" data-name="{{ place.name  }}" data-location="{{ place.location }}"  data-type="{{ place.type }}" data-latlng="{{ place.latlng | jsonify  }}">
+        <div class="card overflow-hidden h-100" id="{{ tripId | append: '-place-' | append: forloop.index }}" data-name="{{ place.name  }}" data-location="{{ place.location }}"  data-type="{{ place.type }}" data-latlng="{{ place.latlng | jsonify  }}">
           <div class="row">
             <div class="col">
               <div class="card-body">
@@ -98,7 +118,7 @@ hide-global-nav: true
   </div>
   <!-- Trip map -->
   <div class="col-lg-8 col-bwr-trip-map p-3 ps-lg-2">
-    <div class="map h-100 rounded-1" id="map-{{ forloop.index }}"></div>
+    <div class="map h-100 rounded-1 border" id="map-{{ forloop.index }}"></div>
   </div>
 </div>
 {% endfor -%}
