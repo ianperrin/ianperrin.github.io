@@ -1,6 +1,7 @@
 {
   "name": "Ian Perrin",
   "short_name": "Ian Perrin",
+  "description": "Dad, technologist, home automation enthusiast, biker and SWFC fan.",
   "icons": [
     {
       "src": "/assets/images/brand/android-chrome-192x192.png",
@@ -15,5 +16,6 @@
   ],
   "theme_color": "#0d6efd",
   "background_color": "#ffffff",
+  "start_url": "/",
   "display": "standalone"
 }
