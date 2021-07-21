@@ -1,11 +1,11 @@
 {% if include.styles -%}
     {% for style in include.styles -%}
         {% if style.sri -%}
-            <link rel="stylesheet" href="{{ style.href }}" integrity="{{ style.sri }}" crossorigin="anonymous" />
+            <link rel="stylesheet" href="{{ style.href }}" integrity="{{ style.sri }}" crossorigin="anonymous" type='text/css' media='all' />
         {% elsif frameworkStyle.href -%}
-            <link rel="stylesheet" href="{{ style.href }}" />
+            <link rel="stylesheet" href="{{ style.href }}" type='text/css' media='all' />
         {% else -%}
-            <link rel="stylesheet" href="{{ style | relative_url }}" />
+            <link rel="stylesheet" href="{{ style | relative_url }}" type='text/css' media='all' />
         {% endif -%}
     {% endfor -%}
 {% else -%}
