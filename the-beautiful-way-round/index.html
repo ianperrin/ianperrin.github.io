@@ -22,7 +22,17 @@ hide-global-nav: true
   {% assign tripId = 'bwr-' | append: trip.slug -%}
   <div class="col">
     <div class="card h-100">
-      <img src="/assets/images/bwr-trips/{{ tripId }}.jpg" class="card-img-top img-fluid" alt="{{ trip.title }} - {{ trip.description }}">
+      <img src="/assets/images/bwr-trips/{{ tripId }}.jpg" 
+           srcset="/assets/images/bwr-trips/{{ tripId }}-320w.jpg 320w,
+                   /assets/images/bwr-trips/{{ tripId }}-640w.jpg 640w,
+                   /assets/images/bwr-trips/{{ tripId }}-800w.jpg 800w,
+                   /assets/images/bwr-trips/{{ tripId }}.jpg 1024w"
+           sizes="(min-width: 768px) 50vw,
+                  (min-width: 992px) 33vw,
+                  (min-width: 1200px) 25vw,
+                  100vw"
+           class="card-img-top img-fluid" 
+           alt="{{ trip.title }} - {{ trip.description }}">
       <div class="card-body">
         <h5 class="card-title"><a href="{{ trip.url }}">{{ trip.description }}</a></h5>
       </div>
