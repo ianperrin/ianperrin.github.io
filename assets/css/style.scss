@@ -2,7 +2,7 @@
 ---
 
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
 
 // Variables
 $font-architects-daughter: "Architects Daughter", "Helvetica Neue", Helvetica,
@@ -106,7 +106,7 @@ main > .container-fluid > .row {
   font-family: $font-architects-daughter;
   // text-transform: uppercase;
   .navbar-brand {
-    color: #39c;
+    color: #0c6cfc;
   }
   .navbar-text {
     font-family: $font-architects-daughter;
