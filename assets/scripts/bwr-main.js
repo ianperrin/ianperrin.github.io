@@ -17,13 +17,13 @@ function initMap(mapDiv, mapIndex) {
       "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
       {
         attribution:
-          'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          '&copy; <a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noopener">Mapbox</a>, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>',
         maxZoom: 18,
         id: "mapbox/streets-v11",
         tileSize: 512,
         zoomOffset: -1,
         accessToken:
-          "pk.eyJ1IjoiaWFucGVycmluIiwiYSI6ImNrYWprc3V4bTA3dGsyeW82MGd5NDQ0M2gifQ.dexk2uljVBH4o5FoxuAYoQ"
+          "pk.eyJ1IjoiaWFucGVycmluIiwiYSI6ImNrcmY1NXM2ZDA0ZXUyeGt3b29iZm56NTkifQ.ZzoGHO0lnc5aX4FK5xvO8Q"
       }
     )
   };
@@ -34,7 +34,7 @@ function initMap(mapDiv, mapIndex) {
     tap: false // see bug https://github.com/Leaflet/Leaflet/issues/7255
   };
   maps[mapIndex] = L.map(mapDiv.id, mapOptions).addLayer(tileLayers.MapBox);
-  //    .on('popupopen', function(e) { //alert(e.popup._source._popup._content); });
+  maps[mapIndex].attributionControl.setPrefix();
 
   // Route Layer
   const routeGeoJson = `/assets/data/bwr-trip-${mapIndex + 1}.json`;
@@ -83,8 +83,6 @@ function initMap(mapDiv, mapIndex) {
     //maps[i].fitBounds(placeLayers[i].getBounds())
   }
 }
-
-// Map Events
 
 // Helper functions
 function getStyle(geoJsonFeature) {
