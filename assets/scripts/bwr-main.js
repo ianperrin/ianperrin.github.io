@@ -6,11 +6,42 @@ const mapMarkers = {
 };
 const maps = [];
 const placeLayers = [];
-
 const mapDivs = document.querySelectorAll("div.map");
-mapDivs.forEach(initMap);
 
-function initMap(mapDiv, mapIndex) {
+// Lazy-loading - https://consto.uk/2018/09/10/lazy-loading-images-the-jekyll-way
+let observer;
+function onIntersection(entries) {
+  entries.forEach((entry) => {
+    if (entry.intersectionRatio > 0) {
+      initMap(entry.target); // Load map
+      observer.unobserve(entry.target); // Stop watching
+      console.log("Unobserving map", entry.target.id);
+    }
+  });
+}
+if ("IntersectionObserver" in window) {
+  console.log("set up IntersectionObserver");
+  observer = new IntersectionObserver(onIntersection, { rootMargin: "250px" });
+  mapDivs.forEach((mapDiv) => {
+    if (
+      typeof mapDiv === "object" &&
+      "classList" in mapDiv &&
+      !mapDiv.classList.contains("lazy-loaded") &&
+      !mapDiv.classList.contains("lazy-error")
+    ) {
+      console.log("Observing map", mapDiv.id);
+      observer.observe(mapDiv);
+    }
+  });
+} else {
+  console.log("no observer");
+  mapDivs.forEach(initMap);
+}
+
+// Load Map
+function initMap(mapDiv) {
+  console.log("loading map:", mapDiv.id);
+  const mapIndex = mapDiv.id.split("-")[1];
   // Tile Layers
   const tileLayers = {
     MapBox: L.tileLayer(
@@ -37,7 +68,7 @@ function initMap(mapDiv, mapIndex) {
   maps[mapIndex].attributionControl.setPrefix();
 
   // Route Layer
-  const routeGeoJson = `/assets/data/bwr-trip-${mapIndex + 1}.json`;
+  const routeGeoJson = `/assets/data/bwr-trip-${mapIndex}.json`;
   const routeOptions = {
     style: getStyle
   };
@@ -53,7 +84,7 @@ function initMap(mapDiv, mapIndex) {
 
   // Places Layer
   const placeDivs = document.querySelectorAll(
-    `div#bwr-trip-${mapIndex + 1} div.card[data-latlng]`
+    `div#bwr-trip-${mapIndex} div.card[data-latlng]`
   );
 
   placeDivs.forEach((placeDiv, placeIndex) => {
@@ -71,7 +102,7 @@ function initMap(mapDiv, mapIndex) {
         .bindPopup(getPopupText(placeData.name, placeData.location))
         .on("popupopen", function (e) {
           document
-            .getElementById(`bwr-trip-${mapIndex + 1}-place-${placeIndex + 1}`)
+            .getElementById(`bwr-trip-${mapIndex}-place-${placeIndex + 1}`)
             .scrollIntoView(false);
         })
         .addTo(placeLayers[mapIndex]);
