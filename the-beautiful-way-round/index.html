@@ -86,13 +86,13 @@ hide-global-nav: true
         <div class="card overflow-hidden h-100" id="{{ tripId | append: '-place-' | append: forloop.index }}" data-name="{{ place.name  }}" data-location="{{ place.location }}"  data-type="{{ place.type }}" data-latlng="{{ place.latlng | jsonify  }}">
           <div class="row">
             <div class="col">
-              <div class="card-body">
-                <h5 class="card-title"><span class="badge rounded-pill badge-{{ place.type }}"><i class="fas fa-fw fa-{{ place.type }}"></i></span> {{ place.name }}</h5>
+              <div class="card-body py-2">
+                <h5 class="card-title mb-0"><span class="badge rounded-pill badge-{{ place.type }}"><i class="fas fa-fw fa-{{ place.type }}"></i></span> {{ place.name }}</h5>
                 <p class="card-text"><small class="text-muted">{{ place.location }}</small></p>
               </div>
             </div>
             <div class="col-3">
-              <img src="https://via.placeholder.com/228x208" class="img-fluid rounded-start float-end" alt="{{ place.name }}, {{ place.location }}" title="{{ place.name }}, {{ place.location }}">
+              <img src="{{ place.image | default: 'placeholder.jpg' | prepend: '/assets/images/bwr-trips/places/' | relative_url }}" class="img-fluid rounded-start float-end" alt="{{ place.name }}, {{ place.location }}" title="{{ place.name }}, {{ place.location }}">
             </div>
           </div>
         </div>
