@@ -175,6 +175,12 @@ main > .container-fluid > .row {
 .badge-bed {
   background-color: #520dc2 !important; // $indigo-600
 }
+.badge-view {
+  background-color: #59359a !important; // $purple-600
+}
+.fa-view:before {
+  content: "\f030";
+}
 .badge-drink {
   background-color: #b02a37 !important; // $red-600
 }

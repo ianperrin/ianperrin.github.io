@@ -19,8 +19,10 @@ places:
     type: bed
     name: The Vine Hotel
     location: Skegness
+    image: the-vine-hotel.jpg
   - latlng: [53.1664262, 0.3489003]
     type: food
     name: The View Cafe Bar
     location: Skegness
+    image: skegness.jpg
 ---

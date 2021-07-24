@@ -3,6 +3,7 @@ const mapMarkers = {
   drink: getMarker("fa-coffee", "red", "circle", "fas"),
   wrench: getMarker("fa-wrench", "orange", "circle", "fas"),
   food: getMarker("fa-utensils", "green", "circle", "fas"),
+  view: getMarker("fa-camera", "indigo", "circle", "fas"),
   bed: getMarker("fa-bed", "blue", "circle", "fas")
 };
 const maps = [];

@@ -107,3 +107,10 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+##################
+### ShortPixel ###
+##################
+.shortpixel
+.sp-progress
