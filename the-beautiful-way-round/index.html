@@ -68,8 +68,8 @@ hide-global-nav: true
       </div>
       <div class="card bg-dark border-light">
         <div class="card-body">
-          <p class="card-text mb-0">{{ trip.distance }}</p>
-          <p class="card-text"><small class="text-muted">Distance (mi)</small></p>
+          <p class="card-text mb-0">{{ trip.distance | append: " mi" }}</p>
+          <p class="card-text"><small class="text-muted">Distance</small></p>
         </div>
       </div>
       <div class="card bg-dark border-light">
@@ -79,32 +79,6 @@ hide-global-nav: true
         </div>
       </div>
     </div>
-    <!-- <div class="row row-bwr-trip-stats row-cols-3 mx-0 mb-3 text-center">
-      <div class="col ps-0">
-        <div class="card h-100">
-          <div class="card-body">
-            <i class="bi bi-calendar3 fs-6 text-danger" role="img" aria-label="Calendar"></i>
-            <h5 class="card-title fs-6">{{ trip.date | date: "%b %y" }}</h5>
-            </div>
-        </div>
-      </div>
-      <div class="col px-0">
-        <div class="card h-100">
-          <div class="card-body">
-            <i class="bi-signpost-2-fill fs-6 text-success" role="img" aria-label="Distance"></i>
-            <h5 class="card-title fs-6">{{ trip.distance | append: " miles"  }}</h5>
-            </div>
-        </div>
-      </div>
-      <div class="col pe-0">
-        <div class="card h-100">
-          <div class="card-body">
-            <i class="bi bi-geo-alt-fill fs-6 text-primary" role="img" aria-label="Places"></i>
-            <h5 class="card-title fs-6">{{ trip.places.size }}</h5>
-            </div>
-        </div>
-      </div>
-    </div> -->
     <!-- Trip places -->
     <div class="row row-bwr-trip-places row-cols-1 mx-0 flex-nowrap flex-lg-wrap gy-lg-2">
       {% for place in trip.places -%}

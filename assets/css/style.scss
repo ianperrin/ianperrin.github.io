@@ -48,17 +48,9 @@ main > .container-fluid > .row {
   }
 }
 // /* Medium devices (tablets, less than 992px) */
-// @media (max-width: 991.98px) {
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .col-bwr-trip-info {
-    height: calc(50% - #{$navbar-bottom-height}/ 2);
-    .bwr-trip-stats {
-      height: 50%;
-    }
-    .row-bwr-trip-stats > .col {
-      height: 50%;
-    }
+    height: calc(35% - #{$navbar-bottom-height}/ 2);
     .row-bwr-trip-places {
       overflow-x: auto;
       -ms-scroll-snap-type: x mandatory;
@@ -70,11 +62,29 @@ main > .container-fluid > .row {
     }
   }
   .col-bwr-trip-map {
-    height: calc(50% - #{$navbar-bottom-height}/ 2);
+    height: calc(65% - #{$navbar-bottom-height}/ 2);
   }
 }
+// Small devices (landscape phones, less than 768px)
+// @media (max-width: 767.98px) {
+//   .col-bwr-trip-info {
+//     height: calc(40% - #{$navbar-bottom-height}/ 2);
+//     .bwr-trip-stats {
+//       height: calc(50% - #{$navbar-bottom-height}/ 2);
+//     }
+//   }
+//   .col-bwr-trip-map {
+//     height: calc(60% - #{$navbar-bottom-height}/ 2);
+//   }
+// }
 // X-Small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {
+  .col-bwr-trip-info {
+    height: calc(50% - #{$navbar-bottom-height}/ 2);
+  }
+  .col-bwr-trip-map {
+    height: calc(50% - #{$navbar-bottom-height}/ 2);
+  }
   .bwr-trip-stats {
     flex-direction: row !important;
     display: flex !important;
