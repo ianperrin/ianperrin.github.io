@@ -147,12 +147,13 @@ main > .container-fluid > .row {
 .row-bwr-trip-features > .col {
   min-height: 400px;
 }
+
+/* common */
 .bg-cover {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 }
-
 .text-shadow-1 {
   text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.25);
 }
@@ -170,14 +171,25 @@ main > .container-fluid > .row {
   border-radius: 1rem;
 }
 
-// Custom Icons
+// Icons
+.badge-bed {
+  background-color: #520dc2 !important; // $indigo-600
+}
+.badge-drink {
+  background-color: #b02a37 !important; // $red-600
+}
 .fa-drink:before {
   content: "\f0f4";
+}
+.badge-food {
+  background-color: #146c43 !important; // $green-600
 }
 .fa-food:before {
   content: "\f2e7";
 }
-
+.badge-wrench {
+  background-color: #fd7e14 !important; // $orange-500
+}
 .leaflet-container {
   z-index: 0;
 }
