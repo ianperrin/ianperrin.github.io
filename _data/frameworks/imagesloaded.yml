@@ -1,0 +1,3 @@
+scripts:
+  - src: https://unpkg.com/imagesloaded@4.1.4/imagesloaded.pkgd.min.js
+    sri: sha384-YnGSHPPWEUDKMHFPOVmNP7Xyfwx5G0CHet6IoNgiX6CbFZS8gCeIfEgB1MgPwjdI

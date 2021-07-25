@@ -7,10 +7,14 @@ redirect_from:
   - /tbwr/
 layout: bwr
 frameworks:
+  - simplestatemanager
   - bootstrap-icons
-  - leaflet-js
-  - leaflet-js-ajax
-  - leaflet-js-extra-markers
+  - masonry-layout
+  - imagesloaded
+  - flickity
+  - leaflet
+  - leaflet-ajax
+  - leaflet-extra-markers
 scripts:
   - /assets/scripts/bwr-main.min.js
 collection: bwr-trips
@@ -80,7 +84,16 @@ hide-global-nav: true
       </div>
     </div>
     <!-- Trip places -->
-    <div class="row row-bwr-trip-places row-cols-1 mx-0 flex-nowrap flex-lg-wrap gy-lg-2">
+    <div class="row row-bwr-trip-places row-cols-1 row-cols-lg-2 mx-0">
+      {% for place in trip.places -%}
+      <div class="col p-0 m-0">
+        <div class="card" id="{{ tripId | append: '-place-' | append: forloop.index }}" data-name="{{ place.name  }}" data-location="{{ place.location }}"  data-type="{{ place.type }}" data-latlng="{{ place.latlng | jsonify  }}">
+          <img src="{{ place.image | default: 'placeholder.jpg' | prepend: '/assets/images/bwr-trips/places/' | relative_url }}" alt="{{ place.name }}, {{ place.location }}" title="{{ place.name }}, {{ place.location }}">
+        </div>
+      </div>
+      {% endfor -%}
+    </div>
+    <!-- <div class="row row-bwr-trip-places row-cols-1 mx-0 flex-nowrap flex-lg-wrap gy-lg-2">
       {% for place in trip.places -%}
       <div class="col ps-0 pe-0">
         <div class="card overflow-hidden h-100" id="{{ tripId | append: '-place-' | append: forloop.index }}" data-name="{{ place.name  }}" data-location="{{ place.location }}"  data-type="{{ place.type }}" data-latlng="{{ place.latlng | jsonify  }}">
@@ -98,7 +111,7 @@ hide-global-nav: true
         </div>
       </div>
       {% endfor -%}
-    </div>
+    </div> -->
   </div>
   <!-- Trip map -->
   <div class="col-lg-8 col-bwr-trip-map p-3 ps-lg-2">

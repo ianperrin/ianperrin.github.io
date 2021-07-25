@@ -1,0 +1,3 @@
+scripts:
+  - src: https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js
+    sri: sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D

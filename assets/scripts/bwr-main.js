@@ -1,4 +1,4 @@
-// Local variables
+// Map variables
 const mapMarkers = {
   drink: getMarker("fa-coffee", "red", "circle", "fas"),
   wrench: getMarker("fa-wrench", "orange", "circle", "fas"),
@@ -10,19 +10,49 @@ const maps = [];
 const placeLayers = [];
 const mapDivs = document.querySelectorAll("div.map");
 
-// Lazy-loading - https://consto.uk/2018/09/10/lazy-loading-images-the-jekyll-way
+// IntersectionObserver variables
 let observer;
+
+// Masonry variables
+const mnsrySelector = "div.row-bwr-trip-places";
+const bwrPlacesDivs = document.querySelectorAll(mnsrySelector);
+const msnry = [];
+
+// Flickity variables
+const flkty = [];
+
+// SimpleStateManager
+ssm.addState({
+  id: "medium",
+  query: "(max-width: 991.98px)",
+  onEnter: function () {
+    console.log("enter medium devices");
+    destroyMasonry();
+    imagesLoaded(bwrPlacesDivs, initFlickty);
+  }
+});
+ssm.addState({
+  id: "large",
+  query: "(min-width: 992px)",
+  onEnter: function () {
+    console.log("enter large devices");
+    imagesLoaded(bwrPlacesDivs, initMasonry);
+    destroyFlickity();
+  }
+});
+
+// Lazy-loading - https://consto.uk/2018/09/10/lazy-loading-images-the-jekyll-way
 function onIntersection(entries) {
   entries.forEach((entry) => {
     if (entry.intersectionRatio > 0) {
       initMap(entry.target); // Load map
       observer.unobserve(entry.target); // Stop watching
-      console.log("Unobserving map", entry.target.id);
+      //   console.log("Unobserving map", entry.target.id);
     }
   });
 }
 if ("IntersectionObserver" in window) {
-  console.log("set up IntersectionObserver");
+  //   console.log("set up IntersectionObserver");
   observer = new IntersectionObserver(onIntersection, { rootMargin: "250px" });
   mapDivs.forEach((mapDiv) => {
     if (
@@ -31,18 +61,62 @@ if ("IntersectionObserver" in window) {
       !mapDiv.classList.contains("lazy-loaded") &&
       !mapDiv.classList.contains("lazy-error")
     ) {
-      console.log("Observing map", mapDiv.id);
+      //   console.log("Observing map", mapDiv.id);
       observer.observe(mapDiv);
     }
   });
 } else {
-  console.log("no observer");
+  //   console.log("no observer");
   mapDivs.forEach(initMap);
+}
+
+// Places Masonry layout
+function initMasonry() {
+  this.elements.forEach((element, elementIndex) => {
+    console.log("Add masonry", elementIndex, element);
+    msnry[elementIndex] = new Masonry(element, { percentPosition: true });
+
+    // element.addEventListener("click", function (event) {
+    //   // don't proceed if item was not clicked on
+    //   if (!matchesSelector(event.currentTarget, mnsrySelector)) {
+    //     return;
+    //   }
+    //   // flip card? - https://stackoverflow.com/questions/40218942/css-flip-animation-on-click
+    //   //event.target.classList.toggle('d-none');
+    //   console.log("element clicked", event.currentTarget);
+    // });
+  });
+}
+function destroyMasonry() {
+  msnry.forEach((m, i) => {
+    console.log("destroy masonry", i, m);
+    m.destroy();
+  });
+}
+
+function initFlickty() {
+  this.elements.forEach((element, elementIndex) => {
+    console.log("Add flickity", elementIndex, element);
+    flkty[elementIndex] = new Flickity(element, {
+      // options
+      cellAlign: "center",
+      contain: true,
+      percentPosition: true,
+      wrapAround: true
+      //cellSelector: "img"
+    });
+  });
+}
+function destroyFlickity() {
+  flkty.forEach((f, i) => {
+    console.log("destroy flickity", i, f);
+    f.destroy();
+  });
 }
 
 // Load Map
 function initMap(mapDiv) {
-  console.log("loading map:", mapDiv.id);
+  //   console.log("loading map:", mapDiv.id);
   const mapIndex = mapDiv.id.split("-")[1];
   // Tile Layers
   const tileLayers = {
@@ -102,11 +176,11 @@ function initMap(mapDiv) {
         icon: mapMarkers[placeData.type]
       })
         .bindPopup(getPopupText(placeData.name, placeData.location))
-        .on("popupopen", function (e) {
-          document
-            .getElementById(`bwr-trip-${mapIndex}-place-${placeIndex + 1}`)
-            .scrollIntoView(false);
-        })
+        // .on("popupopen", function (e) {
+        //   document
+        //     .getElementById(`bwr-trip-${mapIndex}-place-${placeIndex + 1}`)
+        //     .scrollIntoView(false);
+        // })
         .addTo(placeLayers[mapIndex]);
 
       //      placeLayers[mapIndex].addLayer(marker);

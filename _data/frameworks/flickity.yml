@@ -1,0 +1,6 @@
+styles:
+  - href: https://unpkg.com/flickity@2.2.2/dist/flickity.min.css
+    sri: sha384-xL/0pqATwGQBGyuGdRokLTr+LmGNiNzkLIxAd40+SONQ3sktxNVO34FmH9TyuaA1
+scripts:
+  - src: https://unpkg.com/flickity@2.2.2/dist/flickity.pkgd.min.js
+    sri: sha384-OW/MpA/eUcocgSx/2522xqT7O7iP71hd4PSjNqf/9dTp0oyjWeBlkuSzYwOtZS5c

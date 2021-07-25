@@ -1,0 +1,3 @@
+scripts:
+  - src: https://unpkg.com/simplestatemanager@4.1.1/dist/ssm.min.js
+    sri: sha384-EsxOqDrrPJp61QayPr8iexFDBrDeCv/JdHkLo4Eim2Z2Bh0xeNBIsgE38jEmUeOg
