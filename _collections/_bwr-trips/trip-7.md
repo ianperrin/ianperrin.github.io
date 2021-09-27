@@ -8,7 +8,7 @@ places:
     name: Southview Park Hotel
     location: Skegness
     image: southview-park-hotel.jpg
-  - latlng: [52.4931296,-4.7278283]
+  - latlng: [53.5562691,-0.0250492]
     type: food
     name: The Helm (Parkinsons Snack Bar)
     location: Cleethorpes
@@ -18,7 +18,7 @@ places:
     name: The Crown and Anchor
     location: Kilnsea
     image: the-crown-and-anchor.jpg
-  - latlng: [53.6200312,0.1276713]
+  - latlng: [54.1166617,-0.0857412]
     type: drink
     name: The Headlands Cafe Bar
     location: Flamborough Head
