@@ -23,11 +23,26 @@ places:
     name: The Headlands Cafe Bar
     location: Flamborough Head
     image: flamborough-head-lighthouse.jpg
+  - latlng: [54.1166574,-0.0836691]
+    type: view
+    name: View from the toposcope
+    location: Flamborough Head
+    image: flamborough-head-toposcope.jpg
   - latlng: [54.4898403,-0.6188223]
     type: bed
     name: Royal Hotel
     location: Whitby
     image: royal-hotel.jpg
+  - latlng: [54.4883347,-0.6100723]
+    type: view
+    name: Whitby Abbey
+    location: Whitby
+    image: bikes-sunset-whitby-abbey.jpg
+  - latlng: [54.4902792,-0.6184088]
+    type: view
+    name: Whalebone Arch
+    location: Whitby
+    image: whalebone-arch.jpg
   - latlng: [54.4848171,-0.617837]
     type: food
     name: Passage to India
@@ -38,4 +53,14 @@ places:
     name: Stray Cafe
     location: Redcar
     image: stray-cafe.jpg
+  - latlng: [54.6130769,-1.0520284]
+    type: food
+    name: Stray Cafe Breakfast
+    location: Redcar
+    image: stray-cafe-breakfast.jpg
+  - latlng: [54.6934981,-1.18062]
+    type: view
+    name: Heugh Breakwater
+    location: Hartlepool
+    image: heugh-breakwater-hartlepool.jpg
 ---
