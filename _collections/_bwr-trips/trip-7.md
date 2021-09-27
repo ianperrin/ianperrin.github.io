@@ -28,6 +28,11 @@ places:
     name: Royal Hotel
     location: Whitby
     image: royal-hotel.jpg
+  - latlng: [54.4848171,-0.617837]
+    type: food
+    name: Passage to India
+    location: Whitby
+    image: passage-to-india.jpg
   - latlng: [54.6130769,-1.0520284]
     type: food
     name: Stray Cafe
