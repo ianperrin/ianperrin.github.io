@@ -132,11 +132,12 @@ hide-global-nav: true
     "@context" : "https://schema.org",
     "@type" : "Event",
     "@id" : "{{ trip.url | absolute_url }}",
-    "name" : "{{ page.title }} {{ trip.title }}: {{ trip.description }}",
+    "name" : "{{ page.title }} {{ trip.title }}",
+    "description" : "{{ page.title }} {{ trip.title }}: {{ trip.description }}",
+    "location" : "{{ trip.description }}",
     "startDate" : "{{ trip.date | date: "%F" }}",
     "url" : "{{ trip.url | absolute_url }}",
-    "image": "{{ "/assets/images/bwr-trips/" | append: trip.slug | append: ".jpg" | absolute_url }}",
-    "superEvent" : "{{ page.url | absolute_url }}"
+    "image": "{{ "/assets/images/bwr-trips/" | append: trip.slug | append: ".jpg" | absolute_url }}"
   }{% if forloop.last %}{% else %},{% endif %}
   {% endfor -%}
   ]
