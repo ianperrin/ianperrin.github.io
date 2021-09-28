@@ -58,3 +58,5 @@ defaults:
       path: ""
     values:
       layout: default
+      seo:
+        type: Person

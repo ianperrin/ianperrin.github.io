@@ -119,3 +119,28 @@ hide-global-nav: true
   </div>
 </div>
 {% endfor -%}
+<!-- Structured EventSeries data -->
+<script type="application/ld+json">
+  [{
+    "@context" : "https://schema.org",
+    "@type" : "EventSeries",
+    "@id" : "{{ page.url }}",
+    "name" : "{{ page.title }}",
+    {% for trip in site.bwr-trips -%}
+    "subEvent" : "{{ trip.url | absolute_url }}"{% if forloop.last %}{% else %},{% endif %}
+    {% endfor -%}
+  },
+  {% for trip in site.bwr-trips -%}
+  {
+    "@context" : "https://schema.org",
+    "@type" : "Event",
+    "@id" : "{{ trip.url | absolute_url }}",
+    "name" : "{{ page.title }} {{ trip.title }}: {{ trip.description }}",
+    "startDate" : "{{ trip.date | date: "%F" }}",
+    "url" : "{{ trip.url | absolute_url }}",
+    "image": "{{ "/assets/images/bwr-trips/" | append: trip.slug | append: ".jpg" | absolute_url }}",
+    "superEvent" : "{{ page.url | absolute_url }}"
+  }{% if forloop.last %}{% else %},{% endif %}
+  {% endfor -%}
+  ]
+</script>
