@@ -125,10 +125,7 @@ hide-global-nav: true
     "@context" : "https://schema.org",
     "@type" : "EventSeries",
     "@id" : "{{ page.url }}",
-    "name" : "{{ page.title }}",
-    {% for trip in site.bwr-trips -%}
-    "subEvent" : "{{ trip.url | absolute_url }}"{% if forloop.last %}{% else %},{% endif %}
-    {% endfor -%}
+    "name" : "{{ page.title }}"
   },
   {% for trip in site.bwr-trips -%}
   {
