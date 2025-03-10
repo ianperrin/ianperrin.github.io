@@ -5,10 +5,10 @@
       url: "https://uk.linkedin.com/in/ianperrin"
       icon: linkedin
       prefix: fab
-    - name: twitter
-      url: "https://twitter.com/ian_perrin/"
-      icon: twitter-square
-      prefix: fab
+#    - name: twitter
+#      url: "https://twitter.com/ian_perrin/"
+#      icon: twitter-square
+#      prefix: fab
     - name: salesforce
       url: "https://trailblazer.me/id/ianperrin"
       icon: salesforce
@@ -25,7 +25,7 @@
       url: "https://bitbucket.org/ianperrin/"
       icon: bitbucket
       prefix: fab
-    - name: sourcerer
-      url: "https://sourcerer.io/ianperrin"
-      icon: magic
-      prefix: fas
+#    - name: sourcerer
+#      icon: magic
+#      url: "https://sourcerer.io/ianperrin"
+#      prefix: fas
